@@ -317,5 +317,3 @@ imap <C-l> <Plug>(coc-snippets-expand)
 vmap <C-j> <Plug>(coc-snippets-select)
 "在 Vim 窗口底部显示一个永久状态栏，可以显示文件名、行号和列号等内容：
 set laststatus=2
-" 设置了窗口顶部和底部的最小行数，这些行数在光标滚动时保持未被占用。当你的光标移动到这个区域内时，Vim 会自动滚动屏幕。 如果设置了 nowrap 则scrolloff没有效果
-"set scrolloff=3
