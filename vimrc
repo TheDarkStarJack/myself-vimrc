@@ -238,8 +238,8 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
-vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
-nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
+" vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
+" nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
 " vnoremap < <gv
 " vnoremap > >gv
 
@@ -300,8 +300,6 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
-vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
-nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
 
 " Map function and class text objects
 " NOTE: Requires 'textDocument.documentSymbol' support from the language server.
