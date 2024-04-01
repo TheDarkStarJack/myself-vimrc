@@ -240,8 +240,6 @@ nnoremap j gj
 nnoremap gj j
 " vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
 " nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
-" vnoremap < <gv
-" vnoremap > >gv
 
 " insert date 定义插入模式下获取日期的缩写 插入模式下输入 xdate之后按空格，即可快速填充日期
 iab xdate <c-r>=strftime("%Y.%m.%d")<cr>
