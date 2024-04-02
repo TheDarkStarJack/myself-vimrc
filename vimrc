@@ -199,7 +199,7 @@ endif
 
 
 "Set paste mode toggle key 设置粘贴模式切换键
-set pastetoggle=<leader>p
+"set pastetoggle=<leader>p
 
 nnoremap ' `
 nnoremap ` '
