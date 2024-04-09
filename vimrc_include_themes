@@ -126,6 +126,9 @@ nnoremap k gk
 nnoremap gk k
 nnoremap j gj
 nnoremap gj j
+nnoremap <Space>d <C-d> " 将翻页crtl+d/f/b组合键修改为 空格 Space+d/f/b
+nnoremap <Space>f <C-f>
+nnoremap <Space>b <C-b>
 vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
 nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
 " vnoremap < <gv
