@@ -1,0 +1,172 @@
+" global options  nocompatible 表示禁用与vi的兼容性，避免一些问题
+set nocompatible hidden number  ruler
+" 设置不换行
+"set nowrap 
+set wrap
+set lazyredraw ttyfast wildmenu
+set ignorecase smartcase incsearch hlsearch
+set expandtab smarttab tabstop=4 softtabstop=4
+set shiftwidth=4 shiftround
+"set textwidth=80 cc=+1
+set smartindent autochdir
+"set autoindent list mousehide
+set matchpairs+=<:>
+set tags=tags;
+set completeopt-=preview
+set updatetime=300
+set shortmess+=c
+
+" 开启鼠标 支持vim配置中开启鼠标支持，.vimrc文件中加上
+if has('mouse')
+    set mouse-=a
+endif
+
+" 设置tab和空格样式
+set list listchars=nbsp:%,tab:\|\ ,extends:»,precedes:«,trail:-
+
+" Lines folding
+set foldenable foldmethod=marker foldnestmax=1 " foldlevelstart=1
+
+"Set backspace
+set backspace=start,indent
+
+"Set loaded file encodings
+set fileencodings=ucs-bom,utf-8,enc-cn,cp936,default,latin1
+
+if has("patch-8.1.1564")
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
+" Disable compatibility with vi which can cause unexpected issues.
+" set nocompatible
+
+" Enable type file detection. Vim will be able to try to detect the type of file in use.
+" filetype on
+
+" Enable plugins and load plugin for the detected file type.
+" filetype plugin on
+
+" Load an indent file for the detected file type.
+" filetype indent on
+" filetype启用类型文件检测。 Vim 将能够尝试检测正在使用的文件类型。
+filetype plugin indent on
+
+
+set background=dark
+syntax enable
+
+if &term =~ "xterm-256color" || &term =~ "screen-256color" || &term =~ "screen"
+    " enable 256-color mode
+    let &t_Co=256
+    let &t_AF="\e[38;5;%dm"
+    let &t_AB="\e[48;5;%dm"
+    hi Normal ctermbg=none
+endif
+
+"set default guifont and swapfile
+if has("win32") || has("win64")
+    if !isdirectory($HOME . "\\.undodir")
+        call mkdir($HOME . "\\.undodir")
+    endif
+        set dir=$HOME\\.undodir
+        set gfn=Inconsolata:h15,Consolas:h14,Lucida_Console:h15,Terminal:h15
+        set helplang=cn
+        set columns=95
+        set lines=10
+        set guioptions=mr
+        "模拟鼠标点击 alt+x，最大化gvim"
+        au GUIEnter * simalt ~x
+        if version >= 703
+                set undofile undodir=$HOME\\.undodir
+        endif
+elseif has ("unix")
+    if !isdirectory($HOME . "/.vim/.undodir")
+        call mkdir($HOME . "/.vim/.undodir", "p")
+    endif
+        set dir=$HOME/.vim/.undodir
+    set guioptions=mr
+        set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
+        if version >= 703
+                set undofile undodir=$HOME/.vim/.undodir
+        endif
+endif
+
+
+"Set paste mode toggle key 设置粘贴模式切换键
+set pastetoggle=<leader>p
+
+nnoremap ' `
+nnoremap ` '
+nnoremap ,yw yiww
+nnoremap ,ow "_diwhp
+
+"命令行模式下 快速跳转行尾行首 删除字符
+cnoremap <C-A> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-K> <C-U>
+"插入模式下 快速跳转行尾行首 删除字符
+inoremap <C-A> <Home>
+inoremap <C-e> <End>
+" Ctrl+k 通常用于输入特殊字符或者是 digraphs（双字符组合） 考虑之后还是不做映射了
+"inoremap <C-K> <C-U>
+nmap <c-x><c-x> :q<CR>
+nnoremap k gk
+nnoremap gk k
+nnoremap j gj
+nnoremap gj j
+vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
+nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
+" vnoremap < <gv
+" vnoremap > >gv
+
+" insert date 定义插入模式下获取日期的缩写 插入模式下输入 xdate之后按空格，即可快速填充日期
+iab xdate <c-r>=strftime("%Y.%m.%d")<cr>
+
+" When editing a file, always jump to the last known cursor position.
+autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+let g:lightline = {'colorscheme': 'wombat'}
+let g:autofmt_autosave = 1
+
+
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+
+" 设置光标显示
+" Highlight cursor line underneath the cursor horizontally. 水平光标
+" set cursorline
+" Highlight cursor line underneath the cursor vertically. 垂直光标
+" set cursorcolumn
+
+vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
+nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
+
+
+" 配合mintty，在INSERT模式和NORMAL模式下显示不同的光标
+let &t_ti.="\e[1 q"
+let &t_SI.="\e[5 q"
+let &t_EI.="\e[1 q"
+let &t_te.="\e[0 q"
+
+"十六进制显示文件 
+nmap <leader>H :%!xxd<CR>
+"二进制显示文件
+nmap <leader>B :%!xxd -r<CR>
+
+"在 Vim 窗口底部显示一个永久状态栏，可以显示文件名、行号和列号等内容：
+set laststatus=2
+" 设置了窗口顶部和底部的最小行数，这些行数在光标滚动时保持未被占用。当你的光标移动到这个区域内时，Vim 会自动滚动屏幕。 如果设置了 nowrap 则scrolloff没有效果
+"set scrolloff=3
