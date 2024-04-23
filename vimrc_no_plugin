@@ -109,6 +109,23 @@ cnoremap <C-K> <C-U>
 "插入模式下 快速跳转行尾行首 删除字符
 inoremap <C-A> <Home>
 inoremap <C-e> <End>
+
+" 注释
+inoremap <C-l> <Esc>0i## <Esc>j$a " 注释当前行
+
+function! CommentLines()
+    let commentString = '## '
+    let line = getline('.')
+    if strpart(line, 0, strlen(commentString)) == commentString
+        execute 's/^' . commentString . '//'
+    else
+        execute 's/^/' . commentString . '/'
+    endif
+endfunction
+
+vnoremap <C-l> :call CommentLines()<CR> " 调用注释
+nnoremap <C-l> :call CommentLines()<CR> " 调用注释
+
 " Ctrl+k 通常用于输入特殊字符或者是 digraphs（双字符组合） 考虑之后还是不做映射了
 "inoremap <C-K> <C-U>
 nmap <c-x><c-x> :q<CR>
