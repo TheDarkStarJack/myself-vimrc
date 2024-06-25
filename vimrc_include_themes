@@ -200,3 +200,10 @@ nmap <leader>B :%!xxd -r<CR>
 set laststatus=2
 " 设置了窗口顶部和底部的最小行数，这些行数在光标滚动时保持未被占用。当你的光标移动到这个区域内时，Vim 会自动滚动屏幕。 如果设置了 nowrap 则scrolloff没有效果
 "set scrolloff=3
+" 在修改vimrc文件之后自动加载配置
+autocmd BufWritePost $MYGVIMRC let g:needrestart = 1
+
+" 加载存在特定环境的本地vimrc配置文件
+if filereadable(expand('~/.gvimrc.local'))
+    source ~/.gvimrc.local
+endif
