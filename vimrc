@@ -338,9 +338,9 @@ vmap <C-j> <Plug>(coc-snippets-select)
 "在 Vim 窗口底部显示一个永久状态栏，可以显示文件名、行号和列号等内容：
 set laststatus=2
 " 在修改vimrc文件之后自动加载配置
-autocmd BufWritePost $MYGVIMRC let g:needrestart = 1
+autocmd BufWritePost $MYVIMRC let g:needrestart = 1
 
 " 加载存在特定环境的本地vimrc配置文件
-if filereadable(expand('~/.gvimrc.local'))
-    source ~/.gvimrc.local
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
 endif
