@@ -207,3 +207,10 @@ autocmd BufWritePost $MYVIMRC let g:needrestart = 1
 if filereadable(expand('~/.vimrc.local'))
     source ~/.vimrc.local
 endif
+
+" Change work dir to current dir
+autocmd BufEnter * cd %:p:h
+
+" 映射标签页跳转 shift + left/right
+map <S-Left> :tabp<CR>
+map <S-Right> :tabn<CR>
