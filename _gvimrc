@@ -100,3 +100,16 @@ if argc() > 1
     execute 'tabfirst'
 endif
 " gvim 标签页 设置结束 =====================
+
+" 自动打开上次关闭时打开的标签页 设置开始==================
+" 设置 Vim 退出时自动保存会话
+autocmd VimLeave * silent! mksession! Session.vim
+
+" 设置 Vim 启动时自动加载会话
+if argc() == 0
+    " 如果没有打开文件参数，尝试加载会话
+    if filereadable("Session.vim")
+        source Session.vim
+    endif
+endif
+" 自动打开上次关闭时打开的标签页 设置结束==================
