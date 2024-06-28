@@ -250,9 +250,9 @@ nnoremap gj j
 nnoremap <Space>d <C-d> " 将翻页crtl+d/f/b组合键修改为 空格 Space+d/f/b
 nnoremap <Space>f <C-f>
 nnoremap <Space>b <C-b>
-" vnoremap <C-y> "+y   "支持在Visual模式下，通过C-y复制到系统剪切板
-" nnoremap <C-p> "*p   "支持在normal模式下，通过C-p粘贴系统剪切板
-
+vnoremap <C-y> "+y   " 支持在Visual模式下，通过C-y复制到系统剪切板
+nnoremap <C-p> "*p   " 支持在normal模式下，通过C-p粘贴系统剪切板
+nnoremap <C-Del> dw  " 向后删除一个单词
 " insert date 定义插入模式下获取日期的缩写 插入模式下输入 xdate之后按空格，即可快速填充日期
 iab xdate <c-r>=strftime("%Y.%m.%d")<cr>
 
