@@ -58,3 +58,6 @@ LoadScript myself/my-keymaps.vim
 
 " 加载个人宏定义配置
 LoadScript myself/my-macro.vim
+
+" 加载个人插件配置
+LoadScript myself/my-plugins.vim

@@ -38,3 +38,32 @@ endif
 " 自动切换当前目录为文件所在目录
 autocmd BufEnter * cd %:p:h
 
+"----------------------------------------------------------------------
+" swapfile  自动全屏
+"----------------------------------------------------------------------
+if has("win32") || has("win64")
+    if !isdirectory($HOME . "\\.undodir")
+        call mkdir($HOME . "\\.undodir")
+    endif
+        set dir=$HOME\\.undodir
+        set gfn=Inconsolata:h15,Consolas:h14,Lucida_Console:h15,Terminal:h15
+        set helplang=cn
+        set columns=95
+        set lines=10
+        set guioptions=mr
+        "模拟鼠标点击 alt+x，最大化gvim"
+        au GUIEnter * simalt ~x
+        if version >= 703
+                set undofile undodir=$HOME\\.undodir
+        endif
+elseif has ("unix")
+    if !isdirectory($HOME . "/.vim/.undodir")
+        call mkdir($HOME . "/.vim/.undodir", "p")
+    endif
+        set dir=$HOME/.vim/.undodir
+    set guioptions=mr
+        set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
+        if version >= 703
+                set undofile undodir=$HOME/.vim/.undodir
+        endif
+endif
