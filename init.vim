@@ -23,7 +23,7 @@ command! -nargs=1 LoadScript exec 'so '.s:home.'/'.'<args>'
 " 将 vim-init 目录加入 runtimepath
 exec 'set rtp+='.s:home
 
-" 将 ~/.vim 目录加入 runtimepath (有时候 vim 不会自动帮你加入）
+" 将 ~/.vim 目录加入 runtimepath （有时候 vim 不会自动帮你加入）
 set rtp+=~/.vim
 
 
@@ -50,4 +50,11 @@ LoadScript init/init-style.vim
 LoadScript init/init-keymaps.vim
 
 
+" 加载个人基础配置
+LoadScript myself/my-basic.vim
 
+" 加载个人按键配置
+LoadScript myself/my-keymaps.vim
+
+" 加载个人宏定义配置
+LoadScript myself/my-macro.vim
