@@ -75,41 +75,51 @@ call chdir(vimtmp_path)
 " 将 vimtmp 目录下的所有文件添加到参数列表
 " 使用 silent 防止命令回显
 " 首先，检查当前目录下是否有文件
-let files = split(glob('*'), '\n')
-if len(files) > 0
-    " 如果有文件，删除当前参数列表并添加当前目录下的所有文件
-    silent! argdelete *
-    argadd ./*
-"else
-    " 如果没有文件，可以给出提示或者执行其他操作
-"    echo "当前目录没有文件。"
-endif
-
-" 打开参数列表中的第一个文件
-if argc() > 0
-    first 1
-endif
-
-" 如果有多个文件，使用 tab 打开每个文件
-if argc() > 1
-    silent! tabedit
-    for n in range(2, argc())
-        execute 'tabnext'
-        execute 'arg' n
-    endfor
-    execute 'tabfirst'
-endif
+"let files = split(glob('*'), '\n')
+"if len(files) > 0
+"    " 如果有文件，删除当前参数列表并添加当前目录下的所有文件
+"    silent! argdelete *
+"    argadd ./*
+""else
+"    " 如果没有文件，可以给出提示或者执行其他操作
+""    echo "当前目录没有文件。"
+"endif
+"
+"" 打开参数列表中的第一个文件
+"if argc() > 0
+"    first 1
+"endif
+"
+"" 如果有多个文件，使用 tab 打开每个文件
+"if argc() > 1
+"    silent! tabedit
+"    for n in range(2, argc())
+"        execute 'tabnext'
+"        execute 'arg' n
+"    endfor
+"    execute 'tabfirst'
+"endif
 " gvim 标签页 设置结束 =====================
 
 " 自动打开上次关闭时打开的标签页 设置开始==================
 " 设置 Vim 退出时自动保存会话
-autocmd VimLeave * silent! mksession! Session.vim
+let g:sfile=$VIM . '\\Session.vim'
+autocmd VimLeave * silent! mksession! g:sfile
 
 " 设置 Vim 启动时自动加载会话
 if argc() == 0
     " 如果没有打开文件参数，尝试加载会话
-    if filereadable("Session.vim")
-        source Session.vim
+    if filereadable("sfile")
+        source sfile
     endif
 endif
 " 自动打开上次关闭时打开的标签页 设置结束==================
+" 插入模式向后复制一个单词到系统粘贴板
+function! CopyWordToClipboard()
+  execute "normal! \<Esc>"
+  execute "normal! \"+yiw"
+  execute "startinsert"
+endfunction
+inoremap <C-y> <Esc>:call CopyWordToClipboard()<CR>
+" 将 Ctrl+p 映射为从系统剪贴板粘贴内容
+inoremap <C-p> <C-r>+
