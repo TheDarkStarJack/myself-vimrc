@@ -39,13 +39,14 @@ endif
 autocmd BufEnter * cd %:p:h
 
 "----------------------------------------------------------------------
-" swapfile  自动全屏
+" 设置 swapfile  自动全屏
 "----------------------------------------------------------------------
 if has("win32") || has("win64")
-    if !isdirectory($HOME . "\\.undodir")
-        call mkdir($HOME . "\\.undodir")
+    let g:undopath=$HOME . "\\.vim" . "\\undodir"
+    if !isdirectory(g:undopath)
+        call mkdir(g:undopath, "p")
     endif
-        set dir=$HOME\\.undodir
+        set dir=g:undopath
         set gfn=Inconsolata:h15,Consolas:h14,Lucida_Console:h15,Terminal:h15
         set helplang=cn
         set columns=95
@@ -54,16 +55,17 @@ if has("win32") || has("win64")
         "模拟鼠标点击 alt+x，最大化gvim"
         au GUIEnter * simalt ~x
         if version >= 703
-                set undofile undodir=$HOME\\.undodir
+                set undofile undodir=g:undopath
         endif
 elseif has ("unix")
-    if !isdirectory($HOME . "/.vim/.undodir")
-        call mkdir($HOME . "/.vim/.undodir", "p")
+    let g:undopath=$$HOME . "/.vim/.undodir"
+    if !isdirectory(g:undopath)
+        call mkdir(g:undopath, "p")
     endif
-        set dir=$HOME/.vim/.undodir
+        set dir=g:undopath
     set guioptions=mr
         set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
         if version >= 703
-                set undofile undodir=$HOME/.vim/.undodir
+                set undofile undodir=g:undopath
         endif
 endif
