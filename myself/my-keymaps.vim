@@ -9,7 +9,8 @@ noremap <silent><c-5> 5gt<cr>
 noremap <silent><c-6> 6gt<cr>
 noremap <silent><c-7> 7gt<cr>
 noremap <silent><c-8> 8gt<cr>
-noremap <silent><c-9> 9gt<cr>
+" 跳转最后一个标签页
+noremap <silent><c-9> $tabn<cr>
 noremap <silent><c-0> 10gt<cr>
 
 " 映射标签页tab跳转 shift + left/right
@@ -19,7 +20,7 @@ map <S-Right> :tabn<CR>
 "----------------------------------------------------------------------
 " crtl+n 插入模式下新建tab
 "----------------------------------------------------------------------
-inoremap <silent><c-n> tabe<cr>
+inoremap <silent><c-n> :tabe<cr>
 
 "----------------------------------------------------------------------
 " 注释
@@ -49,10 +50,12 @@ function! CopyWordToClipboard()
   execute "startinsert"
 endfunction
 inoremap <C-y> <Esc>:call CopyWordToClipboard()<CR>
-inoremap <C-p> <C-r>+ " 将 Ctrl+p 映射为从系统剪贴板粘贴内容
+" 将 Ctrl+p 映射为从系统剪贴板粘贴内容
+inoremap <C-p> <C-r>+
 vnoremap <C-y> "+y    " 支持在Visual模式下，通过C-y复制到系统剪切板
-nnoremap <C-p> "*p    " 支持在normal模式下，通过C-p粘贴系统剪切板
-
+nnoremap <C-p> "+p    " 支持在normal模式下，通过C-p粘贴系统剪切板
+" 映射命令行模式下的 space+V 为粘贴系统剪贴板内容
+cnoremap <space-V> "+p
 
 "----------------------------------------------------------------------
 " 插入/删除
