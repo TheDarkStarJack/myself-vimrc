@@ -16,7 +16,7 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf']
+	let g:bundle_group += ['leaderf','vim-one']
 endif
 
 
@@ -293,7 +293,7 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline_powerline_fonts = 0
 	let g:airline_exclude_preview = 1
 	let g:airline_section_b = '%n'
-	let g:airline_theme='deus'
+	let g:airline_theme='papercolor'
 	let g:airline#extensions#branch#enabled = 0
 	let g:airline#extensions#syntastic#enabled = 0
 	let g:airline#extensions#fugitiveline#enabled = 0
@@ -517,6 +517,28 @@ if index(g:bundle_group, 'leaderf') >= 0
 	endif
 endif
 
+"----------------------------------------------------------------------
+" 设置主题颜色
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'vim-one') >= 0
+	Plug 'rakr/vim-one'
+	"Credit joshdick
+	"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+	"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+	"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+	if (empty($TMUX))
+		if (has("nvim"))
+			"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+			let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+		endif
+		"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+		"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+		" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+		if (has("termguicolors"))
+			set termguicolors
+		endif
+	endif
+endif
 
 "----------------------------------------------------------------------
 " 结束插件安装

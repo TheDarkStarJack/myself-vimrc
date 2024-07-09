@@ -1,17 +1,17 @@
 "----------------------------------------------------------------------
 " crtl+数字键 切换tab
 "----------------------------------------------------------------------
-noremap <silent><c-1> 1gt<cr>
-noremap <silent><c-2> 2gt<cr>
-noremap <silent><c-3> 3gt<cr>
-noremap <silent><c-4> 4gt<cr>
-noremap <silent><c-5> 5gt<cr>
-noremap <silent><c-6> 6gt<cr>
-noremap <silent><c-7> 7gt<cr>
-noremap <silent><c-8> 8gt<cr>
-" 跳转最后一个标签页
-noremap <silent><c-9> $tabn<cr>
-noremap <silent><c-0> 10gt<cr>
+" noremap <silent><c-1> 1gt<cr>
+" noremap <silent><c-2> 2gt<cr>
+" noremap <silent><c-3> 3gt<cr>
+" noremap <silent><c-4> 4gt<cr>
+" noremap <silent><c-5> 5gt<cr>
+" noremap <silent><c-6> 6gt<cr>
+" noremap <silent><c-7> 7gt<cr>
+" noremap <silent><c-8> 8gt<cr>
+" " 跳转最后一个标签页
+" noremap <silent><c-9> $tabn<cr>
+" noremap <silent><c-0> 10gt<cr>
 
 " 映射标签页tab跳转 shift + left/right
 map <S-Left> :tabp<CR>
@@ -20,7 +20,7 @@ map <S-Right> :tabn<CR>
 "----------------------------------------------------------------------
 " crtl+n 插入模式下新建tab
 "----------------------------------------------------------------------
-inoremap <silent><c-n> :tabe<cr>
+inoremap <silent><c-n> <Esc>:tabnew<CR>a
 
 "----------------------------------------------------------------------
 " 注释

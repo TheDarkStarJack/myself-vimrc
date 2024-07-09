@@ -60,7 +60,7 @@ LoadScript myself/my-keymaps.vim
 LoadScript myself/my-macro.vim
 
 " 加载个人插件配置
-LoadScript myself/my-plugins.vim
+" LoadScript myself/my-plugins.vim
 
 " 加载个人界面样式
 LoadScript myself/my-style.vim

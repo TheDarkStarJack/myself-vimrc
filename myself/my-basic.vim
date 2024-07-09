@@ -69,3 +69,22 @@ elseif has ("unix")
                 set undofile undodir=g:undopath
         endif
 endif
+
+
+"----------------------------------------------------------------------
+" 设置 gtags环境变量
+"----------------------------------------------------------------------
+let $GTAGSLABEL = 'native-pygments'
+" 实现gtags的多语言支持，必须是绝对路径 https://zhuanlan.zhihu.com/p/36279445
+" 下载Windows二进制文件之后，需要将bin所在的目录添加进path中，或者将bin目录移动至系统目录中。
+if has("win32") || has("win64")
+  let $GTAGSCONF = 'D:\software\Vim\gtags-glo669wb\share\gtags\gtags.conf'
+elseif has ("unix")
+  " debain
+  if exists("/usr/local/share/gtags/gtags.conf")
+    let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+   " fedora
+  elseif exists("/etc/gtags.conf")
+    let $GTAGSCONF = '/etc/gtags.conf'
+  endif
+endif
