@@ -58,7 +58,7 @@ if has("win32") || has("win64")
                 set undofile undodir=g:undopath
         endif
 elseif has ("unix")
-    let g:undopath=$$HOME . "/.vim/.undodir"
+    let g:undopath=$HOME . "/.vim/.undodir"
     if !isdirectory(g:undopath)
         call mkdir(g:undopath, "p")
     endif
