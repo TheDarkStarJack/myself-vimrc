@@ -64,3 +64,4 @@ LoadScript myself/my-macro.vim
 
 " 加载个人界面样式
 LoadScript myself/my-style.vim
+
