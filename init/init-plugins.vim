@@ -16,7 +16,7 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf','vim-one']
+	let g:bundle_group += ['leaderf','vim-one', 'markdown']
 endif
 
 
@@ -538,6 +538,84 @@ if index(g:bundle_group, 'vim-one') >= 0
 			set termguicolors
 		endif
 	endif
+endif
+
+"----------------------------------------------------------------------
+" 设置 markdown
+"----------------------------------------------------------------------
+if index(g:bundle_group, 'markdown') >= 0
+	" 如果没有安装 tabular 需要在 vim-mardown 之前安装 tabular
+	" Plug 'godlygeek/tabular'
+	Plug 'preservim/vim-markdown'
+	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+    " set to 1, nvim will open the preview window after entering the Markdown buffer
+	" default is empty
+	let g:mkdp_browserfunc = ''
+
+	" options for Markdown rendering
+	" mkit: markdown-it options for rendering
+	" katex: KaTeX options for math
+	" uml: markdown-it-plantuml options
+	" maid: mermaid options
+	" disable_sync_scroll: whether to disable sync scroll, default 0
+	" sync_scroll_type: 'middle', 'top' or 'relative', default value is 'middle'
+	"   middle: means the cursor position is always at the middle of the preview page
+	"   top: means the Vim top viewport always shows up at the top of the preview page
+	"   relative: means the cursor position is always at relative positon of the preview page
+	" hide_yaml_meta: whether to hide YAML metadata, default is 1
+	" sequence_diagrams: js-sequence-diagrams options
+	" content_editable: if enable content editable for preview page, default: v:false
+	" disable_filename: if disable filename header for preview page, default: 0
+	let g:mkdp_preview_options = {
+				\ 'mkit': {},
+				\ 'katex': {},
+				\ 'uml': {},
+				\ 'maid': {},
+				\ 'disable_sync_scroll': 0,
+				\ 'sync_scroll_type': 'middle',
+				\ 'hide_yaml_meta': 1,
+				\ 'sequence_diagrams': {},
+				\ 'flowchart_diagrams': {},
+				\ 'content_editable': v:false,
+				\ 'disable_filename': 0,
+				\ 'toc': {}
+				\ }
+
+	" use a custom Markdown style. Must be an absolute path
+	" like '/Users/username/markdown.css' or expand('~/markdown.css')
+	let g:mkdp_markdown_css = ''
+
+	" use a custom highlight style. Must be an absolute path
+	" like '/Users/username/highlight.css' or expand('~/highlight.css')
+	let g:mkdp_highlight_css = ''
+
+	" use a custom port to start server or empty for random
+	let g:mkdp_port = ''
+
+	" preview page title
+	" ${name} will be replace with the file name
+	let g:mkdp_page_title = '「${name}」'
+
+	" use a custom location for images
+	let g:mkdp_images_path = $VIM . '/markdown_images'
+
+	" recognized filetypes
+	" these filetypes will have MarkdownPreview... commands
+	let g:mkdp_filetypes = ['markdown']
+
+	" set default theme (dark or light)
+	" By default the theme is defined according to the preferences of the system
+	let g:mkdp_theme = 'light'
+
+	" combine preview window
+	" default: 0
+	" if enable it will reuse previous opened preview window when you preview markdown file.
+	" ensure to set let g:mkdp_auto_close = 0 if you have enable this option
+	let g:mkdp_combine_preview = 0
+
+	" auto refetch combine preview contents when change markdown buffer
+	" only when g:mkdp_combine_preview is 1
+	let g:mkdp_combine_preview_auto_refresh = 1
 endif
 
 "----------------------------------------------------------------------
