@@ -15,13 +15,7 @@ function! AddMarkdownHeader()
 		" 获取当前系统时间
 		let current_time = strftime('%Y-%m-%d %H:%M:%S')
 		" 构造文件头部内容
-		let header = "---\n"
-					\ "title: " . filename . "\n"
-					\ "author: DarkStar\n"
-					\ "date: " . current_time . "\n"
-					\ "categories: [linux, Tutorial]\n"
-					\ "tags: [linux]\n"
-					\ "---\n"
+		let header = "---\n" "title: " . filename . "\n" "author: DarkStar\n" "date: " . current_time . "\n" "categories: [linux, Tutorial]\n" "tags: [linux]\n" "---\n"
 		" 将文件头部内容插入到文件开头
 		call setline(1, add(getline(1, 1), header))
 	endif
