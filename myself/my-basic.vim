@@ -22,6 +22,9 @@ augroup END
 " 'Config changed' autocmd hook
 " autocmd BufWritePost $MYGVIMRC let g:needrestart = 1
 
+" 快速切换pastemode 粘贴模式
+set pastetoggle=<C-_>
+
 " 如果有本地gvim配置则加载
 if filereadable(expand('~/.gvimrc.local'))
     source ~/.gvimrc.local

@@ -277,6 +277,9 @@ if index(g:bundle_group, 'filetypes') >= 0
 
 	" vim org-mode 
 	Plug 'jceb/vim-orgmode', { 'for': 'org' }
+
+	" 快速注释
+	Plug 'tpope/vim-commentary'
 endif
 
 
