@@ -430,7 +430,7 @@ if index(g:bundle_group, 'leaderf') >= 0
 		let g:Lf_ShortcutB = '<m-n>'
 
 		" CTRL+n 打开最近使用的文件 MRU，进行模糊匹配
-		noremap <c-n> :LeaderfMru<cr>
+		noremap <c-q> :LeaderfMru<cr>
 
 		" ALT+p 打开函数列表，按 i 进入模糊匹配，ESC 退出
 		noremap <m-p> :LeaderfFunction!<cr>
@@ -510,7 +510,7 @@ if index(g:bundle_group, 'leaderf') >= 0
 		noremap <c-p> :CtrlP<cr>
 
 		" CTRL+n 打开最近访问过的文件的匹配
-		noremap <c-n> :CtrlPMRUFiles<cr>
+		noremap <c-q> :CtrlPMRUFiles<cr>
 
 		" ALT+p 显示当前文件的函数列表
 		noremap <m-p> :CtrlPFunky<cr>
