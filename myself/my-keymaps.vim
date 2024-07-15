@@ -10,8 +10,8 @@
 " noremap <silent><c-7> 7gt<cr>
 " noremap <silent><c-8> 8gt<cr>
 " " 跳转最后一个标签页
-" noremap <silent><c-9> $tabn<cr>
-" noremap <silent><c-0> 10gt<cr>
+inoremap <silent><m-9> <Esc>:$tabn<cr>
+nnoremap <silent><m-9> $tabn<cr>
 
 " 映射标签页tab跳转 shift + left/right
 map <S-Left> :tabp<CR>
@@ -58,7 +58,7 @@ inoremap <C-p> <C-r>+
 vnoremap <C-y> "+y   
 " 支持在normal模式下，通过C-p粘贴系统剪切板
 nnoremap <C-p> "+p   
-" 映射命令行模式下的 space+V 为粘贴系统剪贴板内容
+" 映射命令行模式下的 ALT+V 为粘贴系统剪贴板内容
 cnoremap <m-v> <C-r>+
 
 "----------------------------------------------------------------------
@@ -78,7 +78,8 @@ inoremap <C-x> <C-o>D
 " 退出
 noremap <c-x><c-x> :q<CR>
 " 保存文件
-noremap <C-s> <Esc>:w<CR>
+nnoremap <C-s> <Esc>:w<CR>
+inoremap <C-s> <Esc>:w<CR>
 
 "----------------------------------------------------------------------
 " 翻页

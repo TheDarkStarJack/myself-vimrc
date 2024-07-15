@@ -38,10 +38,10 @@ function! AddMarkdownHeader()
         let header = [
         \ '---',
         \ 'title: ' . filename,
-        \ 'author: DarkStar',
+        \ '#author: DarkStar',
         \ 'date: ' . current_time,
-        \ 'categories: [linux, Tutorial]',
-        \ 'tags: [linux]',
+        \ 'categories: [Linux, Tutorial]',
+        \ 'tags: [Linux]',
         \ 'summary: A brief summary of the document',
         \ 'keywords: [example, documentation, markdown]',
         \ '---',
@@ -52,6 +52,6 @@ function! AddMarkdownHeader()
         call append(0, header)
     endif
 endfunction
-"autocmd FileType markdown call AddMarkdownHeader()
+" autocmd FileType markdown call AddMarkdownHeader()
 nnoremap <C-m> :call AddMarkdownHeader()<CR>
 " ============== markdown end
