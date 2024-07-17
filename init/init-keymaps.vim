@@ -184,8 +184,8 @@ cnoremap <m-h> <c-left>
 cnoremap <m-l> <c-right>
 
 " ALT+y 删除到行末
-noremap <m-y> d$
-inoremap <m-y> <c-\><c-o>d$
+" 修改noremap <m-y> d$
+" 修改inoremap <m-y> <c-\><c-o>d$
 
 
 "----------------------------------------------------------------------
@@ -193,14 +193,22 @@ inoremap <m-y> <c-\><c-o>d$
 " 传统的 CTRL+hjkl 移动窗口不适用于 vim 8.1 的终端模式，CTRL+hjkl 在
 " bash/zsh 及带文本界面的程序中都是重要键位需要保留，不能 tnoremap 的
 "----------------------------------------------------------------------
-noremap <m-H> <c-w>h
-noremap <m-L> <c-w>l
-noremap <m-J> <c-w>j
-noremap <m-K> <c-w>k
-inoremap <m-H> <esc><c-w>h
-inoremap <m-L> <esc><c-w>l
-inoremap <m-J> <esc><c-w>j
-inoremap <m-K> <esc><c-w>k
+" noremap <m-H> <c-w>h
+" noremap <m-L> <c-w>l
+" noremap <m-J> <c-w>j
+" noremap <m-K> <c-w>k
+" inoremap <m-H> <esc><c-w>h
+" inoremap <m-L> <esc><c-w>l
+" inoremap <m-J> <esc><c-w>j
+" inoremap <m-K> <esc><c-w>k
+noremap <m-h> <c-w>h
+noremap <m-l> <c-w>l
+noremap <m-j> <c-w>j
+noremap <m-k> <c-w>k
+inoremap <m-h> <esc><c-w>h
+inoremap <m-l> <esc><c-w>l
+inoremap <m-j> <esc><c-w>j
+inoremap <m-k> <esc><c-w>k
 
 if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	" vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式

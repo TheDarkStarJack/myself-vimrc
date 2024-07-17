@@ -51,15 +51,15 @@ function! CopyWordToClipboard()
   execute "normal! \"+yiw"
   execute "startinsert"
 endfunction
-inoremap <C-y> <Esc>:call CopyWordToClipboard()<CR>
-" 将 Ctrl+p 映射为从系统剪贴板粘贴内容
-inoremap <C-p> <C-r>+
-" 支持在Visual模式下，通过C-y复制到系统剪切板
-vnoremap <C-y> "+y   
-" 支持在normal模式下，通过C-p粘贴系统剪切板
-nnoremap <C-p> "+p   
+inoremap <M-c> <Esc>:call CopyWordToClipboard()<CR>
+" 映射为从系统剪贴板粘贴内容
+inoremap <M-v> <C-r>+
+" 支持在Visual模式下，复制到系统剪切板
+vnoremap <M-c> "+y 
+" 支持在normal模式下，通过alt+v粘贴系统剪切板
+nnoremap <M-v> "+p
 " 映射命令行模式下的 ALT+V 为粘贴系统剪贴板内容
-cnoremap <m-v> <C-r>+
+cnoremap <M-v> <C-r>+
 
 "----------------------------------------------------------------------
 " 插入/删除
@@ -67,16 +67,16 @@ cnoremap <m-v> <C-r>+
 " 向后删除一个单词
 nnoremap <C-Del> dw 
 " 插入模式下删除当前或后一个单词
-inoremap <C-D>  <Esc>diwi
+inoremap <C-d>  <Esc>dwa
 " 向前删除一个单词 （不包括光标位置的字符）
-nnoremap <C-W> dB   
+nnoremap <C-w> dB   
 " 向后删除至末尾
 inoremap <C-x> <C-o>D
 "----------------------------------------------------------------------
 " 文件退出/保存
 "----------------------------------------------------------------------
 " 退出
-noremap <c-x><c-x> :q<CR>
+noremap q :q<CR>
 " 保存文件
 nnoremap <C-s> <Esc>:w<CR>
 inoremap <C-s> <Esc>:w<CR>
@@ -84,6 +84,7 @@ inoremap <C-s> <Esc>:w<CR>
 "----------------------------------------------------------------------
 " 翻页
 "----------------------------------------------------------------------
-nnoremap <Space>d <C-d> " 将翻页crtl+d/f/b组合键修改为 空格 Space+d/f/b
+" 将翻页crtl+d/f/b组合键修改为 空格 Space+d/f/b
+nnoremap <Space>d <C-d> 
 nnoremap <Space>f <C-f>
 nnoremap <Space>b <C-b>

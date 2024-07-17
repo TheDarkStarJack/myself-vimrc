@@ -13,6 +13,11 @@ set guioptions+=a
 " 确定vim支持`+clipboard`后，如果想`y/p`直接和系统剪贴板打通，可以在`~/.vimrc`中加上以下配置）
 set clipboard^=unnamed,unnamedplus
 
+" 开启自动换行
+set wrap
+
+" 设置当前行高亮
+set cursorline
 " 折叠
 augroup filetype_vim
     autocmd!
@@ -24,6 +29,9 @@ augroup END
 
 " 快速切换pastemode 粘贴模式
 set pastetoggle=<C-_>
+
+" 自动显示相对行号, norelativenumber 关闭显示相对行号
+autocmd BufRead,BufNewFile * set relativenumber
 
 " 如果有本地gvim配置则加载
 if filereadable(expand('~/.gvimrc.local'))
@@ -45,32 +53,32 @@ autocmd BufEnter * cd %:p:h
 " 设置 swapfile  自动全屏
 "----------------------------------------------------------------------
 if has("win32") || has("win64")
-    let g:undopath=$HOME . "\\.vim" . "\\undodir"
-    if !isdirectory(g:undopath)
-        call mkdir(g:undopath, "p")
-    endif
-        set dir=g:undopath
-        set gfn=Inconsolata:h15,Consolas:h14,Lucida_Console:h15,Terminal:h15
-        set helplang=cn
-        set columns=95
-        set lines=10
-        set guioptions=mr
-        "模拟鼠标点击 alt+x，最大化gvim"
-        au GUIEnter * simalt ~x
-        if version >= 703
-                set undofile undodir=g:undopath
-        endif
+	let g:undopath=$HOME . "\\.vim" . "\\undodir"
+	if !isdirectory(g:undopath)
+		call mkdir(g:undopath, "p")
+	endif
+	set dir=g:undopath
+	set gfn=Inconsolata:h15,Consolas:h14,Lucida_Console:h15,Terminal:h15
+	set helplang=cn
+	set columns=95
+	set lines=10
+	set guioptions=mr
+	"模拟鼠标点击 alt+x，最大化gvim"
+	au GUIEnter * simalt ~x
+	if version >= 703
+		set undofile undodir=g:undopath
+	endif
 elseif has ("unix")
-    let g:undopath=$HOME . "/.vim/.undodir"
-    if !isdirectory(g:undopath)
-        call mkdir(g:undopath, "p")
-    endif
-        set dir=g:undopath
-    set guioptions=mr
-        set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
-        if version >= 703
-                set undofile undodir=g:undopath
-        endif
+	let g:undopath=$HOME . "/.vim/.undodir"
+	if !isdirectory(g:undopath)
+		call mkdir(g:undopath, "p")
+	endif
+	set dir=g:undopath
+	set guioptions=mr
+	set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
+	if version >= 703
+		set undofile undodir=g:undopath
+	endif
 endif
 
 
@@ -90,4 +98,12 @@ elseif has ("unix")
   elseif exists("/etc/gtags.conf")
     let $GTAGSCONF = '/etc/gtags.conf'
   endif
+endif
+
+"----------------------------------------------------------------------
+" 设置默认调用的外部终端，主要是Windows下默认使用cmd，修改为pwsh。
+" Linux下默认都是bash一般不需要修改，有需要在指定
+"----------------------------------------------------------------------
+if has("win32") || has("win64")
+	set shell=pwsh.exe
 endif

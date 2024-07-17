@@ -15,8 +15,8 @@
 "----------------------------------------------------------------------
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
-	let g:bundle_group += ['tags', 'airline', 'nerdtree', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf','vim-one', 'markdown']
+	let g:bundle_group += ['tags', 'themes', 'nerdtree', 'ale', 'echodoc']
+	let g:bundle_group += ['leaderf', 'markdown']
 endif
 
 
@@ -119,6 +119,9 @@ if index(g:bundle_group, 'basic') >= 0
 	" Git 支持
 	Plug 'tpope/vim-fugitive'
 
+	" 一个模拟 Notepad++“记住”未命名文件内容的 vim 插件。
+	Plug 'psych3r/vim-remembers'
+
 	" 使用 ALT+E 来选择窗口
 	nmap <m-e> <Plug>(choosewin)
 
@@ -141,6 +144,10 @@ if index(g:bundle_group, 'basic') >= 0
 	let g:signify_vcs_cmds = {
 			\ 'git': 'git diff --no-color --diff-algorithm=histogram --no-ext-diff -U0 -- %f',
 			\}
+
+	" remebers 设置选择保存未命名缓冲区和会话文件的位置
+	let g:remembers_tmp_dir     = '~/.vim/tmp'
+	let g:remembers_session_dir = '~/.vim/tmp'
 endif
 
 
@@ -284,11 +291,12 @@ endif
 
 
 "----------------------------------------------------------------------
-" airline
+" themes 设置主题
 "----------------------------------------------------------------------
-if index(g:bundle_group, 'airline') >= 0
+if index(g:bundle_group, 'themes') >= 0
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
+	Plug 'rakr/vim-one'
 	let g:airline_left_sep = ''
 	let g:airline_left_alt_sep = ''
 	let g:airline_right_sep = ''
@@ -302,6 +310,22 @@ if index(g:bundle_group, 'airline') >= 0
 	let g:airline#extensions#fugitiveline#enabled = 0
 	let g:airline#extensions#csv#enabled = 0
 	let g:airline#extensions#vimagit#enabled = 0
+	"Credit joshdick
+	"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+	"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+	"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+	if (empty($TMUX))
+		if (has("nvim"))
+			"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+			let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+		endif
+		"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+		"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+		" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+		if (has("termguicolors"))
+			set termguicolors
+		endif
+	endif
 endif
 
 
@@ -520,28 +544,6 @@ if index(g:bundle_group, 'leaderf') >= 0
 	endif
 endif
 
-"----------------------------------------------------------------------
-" 设置主题颜色
-"----------------------------------------------------------------------
-if index(g:bundle_group, 'vim-one') >= 0
-	Plug 'rakr/vim-one'
-	"Credit joshdick
-	"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
-	"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
-	"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
-	if (empty($TMUX))
-		if (has("nvim"))
-			"For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
-			let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-		endif
-		"For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
-		"Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
-		" < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
-		if (has("termguicolors"))
-			set termguicolors
-		endif
-	endif
-endif
 
 "----------------------------------------------------------------------
 " 设置 markdown
@@ -551,6 +553,7 @@ if index(g:bundle_group, 'markdown') >= 0
 	" Plug 'godlygeek/tabular'
 	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+	Plug 'preservim/tagbar'
     " set to 1, nvim will open the preview window after entering the Markdown buffer
 	" default is empty
 	let g:mkdp_browserfunc = ''

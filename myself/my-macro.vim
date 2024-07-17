@@ -6,7 +6,7 @@ nmap <leader>B :%!xxd -r<CR>
 " insert date 定义插入模式下获取日期的缩写 插入模式下输入 xdate之后按空格，即可快速填充日期
 iab xdate <c-r>=strftime("%Y.%m.%d")<cr>
 
-" ============= markdown start
+" ============= blog markdown start
 " 编辑 markdown 博客的时候自动插入头部的注释信息
 " function! AddMarkdownHeader()
 " 	if &filetype == 'markdown'
@@ -54,4 +54,20 @@ function! AddMarkdownHeader()
 endfunction
 " autocmd FileType markdown call AddMarkdownHeader()
 nnoremap <C-m> :call AddMarkdownHeader()<CR>
-" ============== markdown end
+
+" 文件名添加日期前缀 这样新创建文件的时候就不需要在键入日期了
+function! SaveWithDate()
+    " 获取当前日期
+    let l:date = strftime("%Y-%m-%d")
+    " 获取文件名（不含扩展名）
+    " let l:filename = expand('%:t:r')
+    " 获取文件名
+    let l:filename = expand('%')
+    " 构造新的文件名
+    let l:new_filename = l:date . '-' . l:filename
+    " 保存文件
+    execute 'write ' . l:new_filename
+endfunction
+
+command! SaveWithDate call SaveWithDate()
+" ============== blog markdown end
