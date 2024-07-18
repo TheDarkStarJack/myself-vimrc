@@ -47,7 +47,7 @@ if filereadable(expand('~/.vimrc.local'))
 endif
 
 " 自动切换当前目录为文件所在目录
-autocmd BufEnter * cd %:p:h
+" autocmd BufEnter * cd %:p:h
 
 "----------------------------------------------------------------------
 " 设置 swapfile  自动全屏
@@ -102,8 +102,9 @@ endif
 
 "----------------------------------------------------------------------
 " 设置默认调用的外部终端，主要是Windows下默认使用cmd，修改为pwsh。
-" Linux下默认都是bash一般不需要修改，有需要在指定
+" Linux下默认都是bash一般不需要修改，有需要在指定。Windows下vim-plugin默认
+" 使用的是cmd.exe，如果修改了默认 shell 为 pwsh ，无法正常使用vim-plugin
 "----------------------------------------------------------------------
-if has("win32") || has("win64")
-	set shell=pwsh.exe
-endif
+" if has("win32") || has("win64")
+" 	set shell=pwsh.exe
+" endif

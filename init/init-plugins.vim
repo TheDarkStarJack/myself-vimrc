@@ -554,6 +554,8 @@ if index(g:bundle_group, 'markdown') >= 0
 	Plug 'preservim/vim-markdown'
 	Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 	Plug 'preservim/tagbar'
+	" markdown outline 测试之后效果不佳，不能自动跳转，只是相当于过滤了标题
+	" Plug 'NikitaIvanovV/vim-markdown-outline'
     " set to 1, nvim will open the preview window after entering the Markdown buffer
 	" default is empty
 	let g:mkdp_browserfunc = ''
