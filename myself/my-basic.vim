@@ -18,6 +18,9 @@ set wrap
 
 " 设置当前行高亮
 set cursorline
+
+" 设置光标距离屏幕边缘的最小行数，在不满足设置的距离时该值无效果
+set scrolloff=20
 " 折叠
 augroup filetype_vim
     autocmd!
@@ -47,7 +50,7 @@ if filereadable(expand('~/.vimrc.local'))
 endif
 
 " 自动切换当前目录为文件所在目录
-" autocmd BufEnter * cd %:p:h
+autocmd BufEnter * cd %:p:h
 
 "----------------------------------------------------------------------
 " 设置 swapfile  自动全屏

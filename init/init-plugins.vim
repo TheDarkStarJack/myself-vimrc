@@ -16,7 +16,7 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'themes', 'nerdtree', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf', 'markdown']
+	let g:bundle_group += ['leaderf', 'markdown', 'dev']
 endif
 
 
@@ -177,6 +177,8 @@ if index(g:bundle_group, 'enhanced') >= 0
 	" 提供 gist 接口
 	Plug 'lambdalisue/vim-gista', { 'on': 'Gista' }
 	
+	" UI 增强，查看一些常用的键位
+	Plug 'skywind3000/vim-quickui'
 	" ALT_+/- 用于按分隔符扩大缩小 v 选区
 	map <m-=> <Plug>(expand_region_expand)
 	map <m--> <Plug>(expand_region_shrink)
@@ -197,8 +199,9 @@ if index(g:bundle_group, 'tags') >= 0
 	" 支持光标移动到符号名上：<leader>cg 查看定义，<leader>cs 查看引用
 	Plug 'skywind3000/gutentags_plus'
 
-	" 设定项目目录标志：除了 .git/.svn 外，还有 .root 文件
-	let g:gutentags_project_root = ['.root']
+	" 设定项目目录标志：除了 .git/.svn 外，还有 .root 文件 . gutentags 搜索工
+	" 程目录的标志，碰到这些文件/目录名就停止向上一级目录递归
+	let g:gutentags_project_root = ['.root','.svn', '.git', '.hg', '.project']
 	let g:gutentags_ctags_tagfile = '.tags'
 
 	" 默认生成的数据文件集中到 ~/.cache/tags 避免污染项目目录，好清理
@@ -228,6 +231,10 @@ if index(g:bundle_group, 'tags') >= 0
 
 	" 禁止 gutentags 自动链接 gtags 数据库
 	let g:gutentags_auto_add_gtags_cscope = 0
+	" 检测 ~/.cache/tags 不存在就新建
+	if !isdirectory(g:gutentags_cache_dir)
+		silent! call mkdir(g:gutentags_cache_dir, 'p')
+	endif
 endif
 
 
