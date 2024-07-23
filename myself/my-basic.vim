@@ -78,7 +78,7 @@ elseif has ("unix")
 	endif
 	set dir=g:undopath
 	set guioptions=mr
-	set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
+	" set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
 	if version >= 703
 		set undofile undodir=g:undopath
 	endif

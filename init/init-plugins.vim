@@ -725,7 +725,8 @@ if index(g:bundle_group, 'dev') >= 0
 	let g:ycm_filetype_blacklist = {'text':1, 'markdown':1, 'php':1}
 	" 实时代码格式化 https://zhuanlan.zhihu.com/p/444971920
 	" 目前支持：Python, Lua, Javascript 几种语言
-	" 使用 vim-plug 安装插件
+	" 使用 vim-plug 安装插件 需要 vim python3支持
+	" 需要安装 pip install autopep8
 	Plug 'skywind3000/vim-rt-format'
 
 	" 默认在 INSERT 模式下按 ENTER 格式化当前代码行，将下面设置
