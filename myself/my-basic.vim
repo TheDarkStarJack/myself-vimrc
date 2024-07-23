@@ -37,16 +37,16 @@ set pastetoggle=<C-_>
 autocmd BufRead,BufNewFile * set relativenumber
 
 " 如果有本地gvim配置则加载
-if filereadable(expand('~/.gvimrc.local'))
-    source ~/.gvimrc.local
+if filereadable(expand('~/.vim/.gvimrc.local'))
+    source ~/.vim/.gvimrc.local
 endif
 
 " 在修改vimrc文件之后自动加载配置
 autocmd BufWritePost $MYVIMRC let g:needrestart = 1
 
 " 加载存在特定环境的本地vimrc配置文件
-if filereadable(expand('~/.vimrc.local'))
-    source ~/.vimrc.local
+if filereadable(expand('~/.vim/.vimrc.local'))
+    source ~/.vim/.vimrc.local
 endif
 
 " 自动切换当前目录为文件所在目录
