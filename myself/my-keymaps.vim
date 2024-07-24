@@ -20,8 +20,8 @@ map <S-Right> :tabn<CR>
 "----------------------------------------------------------------------
 " crtl+n 新建tab
 "----------------------------------------------------------------------
-inoremap <silent><c-n> <Esc>:tabnew<CR>
-nnoremap <silent><c-n> <Esc>:tabnew<CR>
+inoremap <silent><C-n> <Esc>:tabnew<CR>
+nnoremap <silent><C-n> :tabnew<CR>
 
 "----------------------------------------------------------------------
 " 注释
