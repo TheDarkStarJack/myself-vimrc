@@ -16,7 +16,7 @@
 if !exists('g:bundle_group')
 	let g:bundle_group = ['basic', 'tags', 'enhanced', 'filetypes', 'textobj']
 	let g:bundle_group += ['tags', 'themes', 'nerdtree', 'ale', 'echodoc']
-	let g:bundle_group += ['leaderf', 'markdown', 'dev']
+	let g:bundle_group += ['leaderf', 'markdown', 'dev', 'workman']
 endif
 
 
@@ -635,7 +635,12 @@ endif
 
 if index(g:bundle_group, 'dev') >= 0
 	" 自动补全
-	Plug 'ycm-core/YouCompleteMe'
+	" Use release branch (recommended)
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+	" Or build from source code by using npm
+	" Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+	" Plug 'ycm-core/YouCompleteMe'
 	"----------------------------------------------------------------------
 	" YouCompleteMe 默认设置：YCM 需要你另外手动编译安装
 	"----------------------------------------------------------------------
@@ -753,6 +758,8 @@ if index(g:bundle_group, 'dev') >= 0
 	set shortmess+=c
 endif
 
+if index(g:bundle_group, 'workman') >= 0
+endif
 "----------------------------------------------------------------------
 " 结束插件安装
 "----------------------------------------------------------------------
