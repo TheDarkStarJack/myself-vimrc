@@ -67,7 +67,7 @@ cnoremap <M-v> <C-r>+
 " 向后删除一个单词
 nnoremap <C-Del> dw 
 " 插入模式下删除当前或后一个单词
-inoremap <C-d>  <Esc>dawa
+" inoremap <C-d>  <Esc>dawa
 " 向前删除一个单词 （不包括光标位置的字符）
 nnoremap <C-w> dB   
 " 向后删除至末尾
