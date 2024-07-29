@@ -88,3 +88,4 @@ inoremap <C-s> <Esc>:w<CR>
 nnoremap <Space>d <C-d> 
 nnoremap <Space>f <C-f>
 nnoremap <Space>b <C-b>
+nnoremap <Space>u <C-u>
