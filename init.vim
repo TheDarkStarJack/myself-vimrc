@@ -67,3 +67,4 @@ LoadScript myself/my-style.vim
 
 " 加载个人自定义配置
 LoadScript myself/my-file-header.vim
+LoadScript myself/my-local.vim

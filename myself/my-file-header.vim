@@ -81,7 +81,7 @@ function! AddHeader()
 	call append(0, g:header)
 endfunction
 " autocmd FileType markdown call AddMarkdownHeader()
-nnoremap <C-m> :call AddHeader()<Enter>
+nnoremap <silent> <C-m> :call AddHeader()<CR>
 
 " 文件名添加日期前缀 这样新创建文件的时候就不需要在键入日期了
 function! SaveWithDate()
