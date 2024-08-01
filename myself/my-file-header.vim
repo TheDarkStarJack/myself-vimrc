@@ -78,7 +78,9 @@ function! AddHeader()
 
 	endif
 	" 将文件头部内容插入到文件开头
-	call append(0, g:header)
+	if exists('g:header') && !empty(g:header)
+		call append(0, g:header)
+	endif
 endfunction
 " autocmd FileType markdown call AddMarkdownHeader()
 nnoremap <silent> <C-m> :call AddHeader()<CR>

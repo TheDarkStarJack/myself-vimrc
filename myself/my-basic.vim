@@ -16,8 +16,13 @@ set clipboard^=unnamed,unnamedplus
 " 开启自动换行
 set wrap
 
-" 设置当前行高亮
+" 设置当前行/列高亮
 set cursorline
+set cursorcolumn
+
+" 处 正常和命令模式之外 禁用鼠标键位避免打字的时候误触碰触摸板，光标乱跑，可以使用滚轮用于翻页
+" help mouse
+set mouse=nc
 
 " 设置光标距离屏幕边缘的最小行数，在不满足设置的距离时该值无效果
 set scrolloff=20
@@ -88,20 +93,22 @@ endif
 "----------------------------------------------------------------------
 " 设置 gtags环境变量
 "----------------------------------------------------------------------
+" Windows 下使用 scoop 安装 gtags 就行，Linux 中直接安装之后就行，只需要指定
+" GTAGSLABEL 就行
 let $GTAGSLABEL = 'native-pygments'
-" 实现gtags的多语言支持，必须是绝对路径 https://zhuanlan.zhihu.com/p/36279445
-" 下载Windows二进制文件之后，需要将bin所在的目录添加进path中，或者将bin目录移动至系统目录中。
-if has("win32") || has("win64")
-  let $GTAGSCONF = 'D:\software\Vim\gtags-glo669wb\share\gtags\gtags.conf'
-elseif has ("unix")
-  " debain
-  if exists("/usr/local/share/gtags/gtags.conf")
-    let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
-   " fedora
-  elseif exists("/etc/gtags.conf")
-    let $GTAGSCONF = '/etc/gtags.conf'
-  endif
-endif
+" " 实现gtags的多语言支持，必须是绝对路径 https://zhuanlan.zhihu.com/p/36279445
+" " 下载Windows二进制文件之后，需要将bin所在的目录添加进path中，或者将bin目录移动至系统目录中。
+" if has("win32") || has("win64")
+"   let $GTAGSCONF = 'D:\software\Vim\gtags-glo669wb\share\gtags\gtags.conf'
+" elseif has ("unix")
+"   " debain
+"   if exists("/usr/local/share/gtags/gtags.conf")
+"     let $GTAGSCONF = '/usr/local/share/gtags/gtags.conf'
+"    " fedora
+"   elseif exists("/etc/gtags.conf")
+"     let $GTAGSCONF = '/etc/gtags.conf'
+"   endif
+" endif
 
 "----------------------------------------------------------------------
 " 设置默认调用的外部终端，主要是Windows下默认使用cmd，修改为pwsh。

@@ -11,3 +11,16 @@ enddef
 
 command! CdBlogDir call CdBlogDir()
 
+def CdOneDrive()
+	const OneDrive = 'D:\OneDrive\笔记'
+	execute 'cd ' OneDrive
+enddef
+
+command! CdOneDrive call CdOneDrive()
+
+def CdVimCon()
+	var VimCon = '~/.vim/vim-init/'
+	execute 'cd ' VimCon
+enddef
+
+command! CdVimCon call CdVimCon()
