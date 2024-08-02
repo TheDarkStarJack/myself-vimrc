@@ -1,3 +1,4 @@
+" => 基础设置 --------------------------------------------------------- {{{1
 set completeopt-=preview
 " 自动保存时间
 set updatetime=300
@@ -57,6 +58,8 @@ endif
 " 自动切换当前目录为文件所在目录
 autocmd BufEnter * cd %:p:h
 
+
+" => 设置 swapfile 和 gvim 打开 自动全屏  --------------------------------------------------------- {{{1
 "----------------------------------------------------------------------
 " 设置 swapfile  自动全屏
 "----------------------------------------------------------------------
@@ -89,7 +92,7 @@ elseif has ("unix")
 	endif
 endif
 
-
+" => 配置 gtags --------------------------------------------------------- {{{1
 "----------------------------------------------------------------------
 " 设置 gtags环境变量
 "----------------------------------------------------------------------
@@ -110,6 +113,7 @@ let $GTAGSLABEL = 'native-pygments'
 "   endif
 " endif
 
+" => 设置外部终端  --------------------------------------------------------- {{{1
 "----------------------------------------------------------------------
 " 设置默认调用的外部终端，主要是Windows下默认使用cmd，修改为pwsh。
 " Linux下默认都是bash一般不需要修改，有需要在指定。Windows下vim-plugin默认
@@ -118,3 +122,14 @@ let $GTAGSLABEL = 'native-pygments'
 " if has("win32") || has("win64")
 " 	set shell=pwsh.exe
 " endif
+
+" => 高亮组设置  --------------------------------------------------------- {{{1
+" 高亮组设置
+" 定义一个新的高亮组并设置其颜色和样式用于显示提示信息，搭配 echohl 使用。 
+" help hi ; help echohl
+hi MyEcho ctermfg=red guifg=#ff0000
+" highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=#008b8b  guifg=NONE
+" highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=#8b0000 guifg=NONE
+highlight CursorLine ctermbg=DarkCyan guibg=#008b8b
+highlight CursorColumn ctermbg=DarkRed guibg=#8b0000
+

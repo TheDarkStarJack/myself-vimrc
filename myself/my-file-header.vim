@@ -1,24 +1,9 @@
 " 写笔记或者脚本的时候方便添加一些头部描述
-" ============= blog markdown start
-" 编辑 markdown 博客的时候自动插入头部的注释信息
-" function! AddMarkdownHeader()
-" 	if &filetype == 'markdown'
-" 		" 获取当前文件名（不包含扩展名）
-" 		let filename = expand('%:t:r')
-" 		" 获取当前系统时间
-" 		let current_time = strftime('%Y-%m-%d %H:%M:%S')
-" 		" 构造文件头部内容
-" 		let header = "---\n" "title: " . filename . "\n" "author: DarkStar\n" "date: " . current_time . "\n" "categories: [linux, Tutorial]\n" "tags: [linux]\n" "---\n"
-" 		" 将文件头部内容插入到文件开头
-" 		call setline(1, append(getline(1, 1), header))
-" 	endif
-" endfunction
-
 function! AddHeader()
 	" 获取当前文件名（不包含扩展名）
-	let g:filename = expand('%:t:r')
+	let l:filename = expand('%:t:r')
 	" 获取当前系统时间
-	let g:current_time = strftime('%Y-%m-%d %H:%M:%S')
+	let l:current_time = strftime('%Y-%m-%d %H:%M:%S')
 
 	if &filetype == 'markdown'
 		" 检查文件是否已经有头部
@@ -32,11 +17,11 @@ function! AddHeader()
 		" _posts/2024-07-19-vim-plug-异常处理.md has a future date
 		" 而且编译之后网页显示的日期也不对
 		" https://changwh.github.io/2019/03/17/timezone-issue-in-jekyll/
-		let g:header = [
+		let l:header = [
 					\ '---',
-					\ 'title: ' . g:filename,
+					\ 'title: ' . l:filename,
 					\ '#author: DarkStar',
-					\ 'date: ' . g:current_time . '+0800',
+					\ 'date: ' . l:current_time . '+0800',
 					\ 'categories: [, ]',
 					\ 'tags: []',
 					\ 'summary: A brief summary of the document',
@@ -52,13 +37,13 @@ function! AddHeader()
 			return
 		endif
 
-		let g:header = [
+		let l:header = [
 					\ '#!/bin/bash -',
 					\ '#===============================================================================',
 					\ '#',
-					\ '#          FILE: ' . g:filename,
+					\ '#          FILE: ' . l:filename,
 					\ '#',
-					\ '#         USAGE: ' . g:filename . ' [args1] [args2]',
+					\ '#         USAGE: ' . l:filename . ' [args1] [args2]',
 					\ '#',
 					\ '#   DESCRIPTION:.',
 					\ '#',
@@ -68,7 +53,7 @@ function! AddHeader()
 					\ '#         NOTES: ---',
 					\ '#        AUTHOR: wxj (DarkStar), 2403220952@qq.com',
 					\ '#  ORGANIZATION:.',
-					\ '#       CREATED: ' . g:current_time ,
+					\ '#       CREATED: ' . l:current_time ,
 					\ '#      REVISION:  ---',
 					\ '#===============================================================================',
 					\ '',
@@ -78,12 +63,17 @@ function! AddHeader()
 
 	endif
 	" 将文件头部内容插入到文件开头
-	if exists('g:header') && !empty(g:header)
-		call append(0, g:header)
+	if exists('l:header') && !empty(l:header)
+		execute 'call append(0, l:header)'
+	else
+		echohl MyEcho | echo "Please add file header information, currently supports markdown and bash types."  | echohl None
 	endif
 endfunction
 " autocmd FileType markdown call AddMarkdownHeader()
-nnoremap <silent> <C-m> :call AddHeader()<CR>
+" nnoremap <silent><C-m> :call AddHeader()<CR>
+" LeaderF 和 coc 都使用了 crtl+m 和 enter 的组合，导致正常模式下按下回车会自动
+" 执行 Addheader ，所以这里改为调用函数 🤣
+command AddHeader call AddHeader()
 
 " 文件名添加日期前缀 这样新创建文件的时候就不需要在键入日期了
 function! SaveWithDate()
