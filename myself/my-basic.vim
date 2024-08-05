@@ -130,6 +130,10 @@ let $GTAGSLABEL = 'native-pygments'
 hi MyEcho ctermfg=red guifg=#ff0000
 " highlight CursorLine   cterm=NONE ctermbg=black ctermfg=green guibg=#008b8b  guifg=NONE
 " highlight CursorColumn cterm=NONE ctermbg=black ctermfg=green guibg=#8b0000 guifg=NONE
-highlight CursorLine ctermbg=DarkCyan guibg=#008b8b
-highlight CursorColumn ctermbg=DarkRed guibg=#8b0000
+highlight CursorLine ctermbg=DarkCyan guibg=#000000
+" highlight CursorColumn ctermbg=DarkRed guibg=#8b0000
 
+" => 帮助手册右侧显示 --------------------------------------------------------- {{{1
+" 默认是水平分割上下两个窗口显示帮助手册，不太喜欢这种风格，修改为垂直分割在右
+" 侧显示帮助手册信息
+autocmd FileType help wincmd L

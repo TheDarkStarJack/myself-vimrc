@@ -27,10 +27,11 @@ nnoremap <silent><C-n> :tabnew<CR>
 " 注释
 "----------------------------------------------------------------------
 " 注释当前行
-inoremap <C-l> <Esc>0i## <Esc>j$a 
+let g:mycomment='" =>  --------------------------------------------------------- {{{1'
+inoremap <C-l> <Esc>0i# <Esc>j$a 
 
 function! CommentLines()
-    let commentString = '## '
+    let commentString = '# '
     let line = getline('.')
     if strpart(line, 0, strlen(commentString)) == commentString
         execute 's/^' . commentString . '//'
@@ -41,6 +42,8 @@ endfunction
 
 vnoremap <C-l> :call CommentLines()<CR> " 调用注释
 nnoremap <C-l> :call CommentLines()<CR> " 调用注释
+
+
 
 "----------------------------------------------------------------------
 " 复制粘贴

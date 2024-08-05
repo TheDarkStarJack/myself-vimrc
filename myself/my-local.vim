@@ -24,3 +24,6 @@ def CdVimCon()
 enddef
 
 command! CdVimCon call CdVimCon()
+
+# 设置 luadll 路径，不然无法正常找到 luadll ，直接指定 dll 路径，免得污染 path
+set luadll=D:\\Program\ Files\\Scoop\\apps\\lua\\current\\lua54.dll
