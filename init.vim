@@ -56,15 +56,15 @@ LoadScript myself/my-basic.vim
 " 加载个人按键配置
 LoadScript myself/my-keymaps.vim
 
-" 加载个人宏定义配置
-LoadScript myself/my-macro.vim
-
 " 加载个人插件配置
 " LoadScript myself/my-plugins.vim
 
 " 加载个人界面样式
 LoadScript myself/my-style.vim
 
+" 加载个人宏定义配置
+LoadScript myself/my-macro.vim
+
 " 加载个人自定义配置
 LoadScript myself/my-file-header.vim
-LoadScript myself/my-local.vim
+LoadScript myself/my-timer.vim
