@@ -4,6 +4,7 @@ if exists('*MyTimer')
 	delfunction MyTimer
 endif
 def MyTimer(timer: number)
+    import my-style.vim.MyEcho()
 	# var now_time = strftime("%Y.%m.%d %H-%M-%S")
 	var drink_tea = strftime("%H%M%S")
 	# sleep 5
