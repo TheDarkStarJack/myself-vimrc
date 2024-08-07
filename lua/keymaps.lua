@@ -31,3 +31,6 @@ vim.keymap.set('v', '<', '<gv', opts)
 vim.keymap.set('v', '>', '>gv', opts)
 
 -- 文件保存
+vim.keymap.set('n', 'q', ':q<CR>', opts)
+vim.keymap.set('i', '<C-s>', '<Esc>:w', opts)
+vim.keymap.set('n', '<C-s>', ':w', opts)
