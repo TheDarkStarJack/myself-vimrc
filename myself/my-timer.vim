@@ -16,12 +16,12 @@ def g:MyTimer()
 	# sleep 5
 	if drink_tea >= "1500" && drink_tea <= "1530"
 		# echohl MyEcho | echo "三点几咧，饮茶先啦" | echohl None
-		call EchoRed("三点几咧，饮茶先啦")
-		execute ':sleep 1'
+		# call EchoRed("三点几咧，饮茶先啦")
+		# execute ':sleep 1'
 		execute ':10echowindow' "'请起来走动一下，狗命要紧'"
 	else
-		call EchoRed("你已经持续工作了20分钟了，请起来走动一下，狗命重要")
-		execute ':sleep 1'
+		# call EchoRed("你已经持续工作了20分钟了，请起来走动一下，狗命重要")
+		# execute ':sleep 1'
 		execute ':10echowindow' "'请起来走动一下，狗命要紧'"
 	endif
 enddef
