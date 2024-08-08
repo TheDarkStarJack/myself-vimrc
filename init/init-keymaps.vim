@@ -168,10 +168,10 @@ noremap <silent><m-right> :call Tab_MoveRight()<cr>
 "----------------------------------------------------------------------
 
 " ALT+h/l 快速左右按单词移动（正常模式+插入模式）
-noremap <m-h> b
-noremap <m-l> w
-inoremap <m-h> <c-left>
-inoremap <m-l> <c-right>
+" noremap <m-h> b
+" noremap <m-l> w
+" inoremap <m-h> <c-left>
+" inoremap <m-l> <c-right>
 
 " ALT+j/k 逻辑跳转下一行/上一行（按 wrap 逻辑换行进行跳转） 
 noremap <m-j> gj
@@ -201,6 +201,7 @@ cnoremap <m-l> <c-right>
 " inoremap <m-L> <esc><c-w>l
 " inoremap <m-J> <esc><c-w>j
 " inoremap <m-K> <esc><c-w>k
+" if winnr()>1 
 noremap <m-h> <c-w>h
 noremap <m-l> <c-w>l
 noremap <m-j> <c-w>j
@@ -209,6 +210,7 @@ inoremap <m-h> <esc><c-w>h
 inoremap <m-l> <esc><c-w>l
 inoremap <m-j> <esc><c-w>j
 inoremap <m-k> <esc><c-w>k
+" endif
 
 if has('terminal') && exists(':terminal') == 2 && has('patch-8.1.1')
 	" vim 8.1 支持 termwinkey ，不需要把 terminal 切换成 normal 模式
