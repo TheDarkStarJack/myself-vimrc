@@ -43,16 +43,16 @@ set pastetoggle=<C-_>
 autocmd BufRead,BufNewFile * set relativenumber
 
 " 如果有本地gvim配置则加载
-if filereadable(expand('~/.vim/.gvimrc.local'))
-    source ~/.vim/.gvimrc.local
+if filereadable(expand('~/.config/nvim-init/.gvimrc.local'))
+    source ~/.config/nvim-init/.gvimrc.local
 endif
 
 " 在修改vimrc文件之后自动加载配置
 autocmd BufWritePost $MYVIMRC let g:needrestart = 1
 
 " 加载存在特定环境的本地vimrc配置文件
-if filereadable(expand('~/.vim/.vimrc.local'))
-    source ~/.vim/.vimrc.local
+if filereadable(expand('~/.config/nvim-init/.vimrc.local'))
+    source ~/.config/nvim-init/.vimrc.local
 endif
 
 " 自动切换当前目录为文件所在目录
@@ -64,11 +64,10 @@ autocmd BufEnter * cd %:p:h
 " 设置 swapfile  自动全屏
 "----------------------------------------------------------------------
 if has("win32") || has("win64")
-	let g:undopath=$HOME . "\\.vim" . "\\undodir"
-	if !isdirectory(g:undopath)
-		call mkdir(g:undopath, "p")
+	if !isdirectory($HOME . "\\.config\\nvim-init\\undodir")
+		call mkdir($HOME. "\\.config\\nvim-init\\undodir")
 	endif
-	set dir=g:undopath
+	set dir=$HOME\\.config\\nvim-init\\undodir
 	set gfn=Inconsolata:h15,Consolas:h14,Lucida_Console:h15,Terminal:h15
 	set helplang=cn
 	set columns=95
@@ -77,18 +76,17 @@ if has("win32") || has("win64")
 	"模拟鼠标点击 alt+x，最大化gvim"
 	au GUIEnter * simalt ~x
 	if version >= 703
-		set undofile undodir=g:undopath
+		set undofile undodir=$HOME\\.config\\nvim-init\\undodir
 	endif
 elseif has ("unix")
-	let g:undopath=$HOME . "/.vim/.undodir"
-	if !isdirectory(g:undopath)
-		call mkdir(g:undopath, "p")
+	if !isdirectory($HOME . "/.config/nvim-init/undodir")
+		call mkdir($HOME . "/.config/nvim-init/undodir", "p")
 	endif
-	set dir=g:undopath
+	set dir=$HOME/.config/nvim-init/undodir
 	set guioptions=mr
 	" set guifont=Meslo\ LG\ M\ DZ\ 16,DejaVu\ Sans\ Mono\ 16
 	if version >= 703
-		set undofile undodir=g:undopath
+		set undofile undodir=$HOME/.config/nvim-init/undodir
 	endif
 endif
 

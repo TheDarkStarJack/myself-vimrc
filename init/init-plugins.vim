@@ -32,9 +32,9 @@ endfunc
 
 " => 安装插件 --------------------------------------------------------- {{{1
 "----------------------------------------------------------------------
-" 在 ~/.vim/bundles 下安装插件
+" 在 ~/.config/nvim-init/bundles 下安装插件
 "----------------------------------------------------------------------
-call plug#begin(get(g:, 'bundle_home', '~/.vim/bundles'))
+call plug#begin(get(g:, 'bundle_home', $HOME . '/bundles'))
 
 
 "----------------------------------------------------------------------
@@ -127,7 +127,7 @@ if index(g:bundle_group, 'basic') >= 0
 
 	" 默认不显示 startify
 	let g:startify_disable_at_vimenter = 1
-	let g:startify_session_dir = '~/.vim/session'
+	let g:startify_session_dir = '~/.config/nvim-init/session'
 
 	" 使用 <space>ha 清除 errormarker 标注的错误
 	noremap <silent><space>ha :RemoveErrorMarkers<cr>
@@ -146,8 +146,8 @@ if index(g:bundle_group, 'basic') >= 0
 			\}
 
 	" remebers 设置选择保存未命名缓冲区和会话文件的位置
-	let g:remembers_tmp_dir     = '~/.vim/tmp'
-	let g:remembers_session_dir = '~/.vim/tmp'
+	let g:remembers_tmp_dir     = '~/.config/nvim-init/tmp'
+	let g:remembers_session_dir = '~/.config/nvim-init/tmp'
 endif
 
 " => 增强插件 --------------------------------------------------------- {{{1
@@ -493,7 +493,7 @@ if index(g:bundle_group, 'leaderf') >= 0
 		let g:Lf_RootMarkers = ['.project', '.root', '.svn', '.git']
 		let g:Lf_WorkingDirectoryMode = 'Ac'
 		let g:Lf_WindowHeight = 0.30
-		let g:Lf_CacheDirectory = expand('~/.vim/cache')
+		let g:Lf_CacheDirectory = expand('~/.config/nvim-init/cache')
 
 		" 显示绝对路径
 		let g:Lf_ShowRelativePath = 0
