@@ -10,7 +10,7 @@ enddef
 if exists('*MyTimer')
 	delfunction MyTimer
 endif
-def g:MyTimer()
+def g:MyTimer(timer: number)
 	# var now_time = strftime("%Y.%m.%d %H-%M-%S")
 	var drink_tea = strftime("%H%M")
 	# sleep 5
@@ -18,7 +18,7 @@ def g:MyTimer()
 		# echohl MyEcho | echo "三点几咧，饮茶先啦" | echohl None
 		# call EchoRed("三点几咧，饮茶先啦")
 		# execute ':sleep 1'
-		execute ':10echowindow' "'请起来走动一下，狗命要紧'"
+		execute ':10echowindow' "'三点几咧，饮茶先啦!!!! 请起来走动一下，狗命要紧'"
 	else
 		# call EchoRed("你已经持续工作了20分钟了，请起来走动一下，狗命重要")
 		# execute ':sleep 1'
