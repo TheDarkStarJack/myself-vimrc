@@ -149,7 +149,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 })
 
 -- 打开 help 手册的时候在右侧显示，默认上下分页有点抽象
--- This file is automatically loaded by lazyvim.config.init.
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("helpwin"),
   pattern = "help",
