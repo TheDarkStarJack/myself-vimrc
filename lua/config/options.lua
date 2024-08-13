@@ -21,4 +21,10 @@ end
 vim.opt.wrap = true
 
 -- 设置自动切换目录
-vim.autochdir = true
+vim.opt.autochdir = true
+-- 处 正常和命令模式之外 禁用鼠标键位避免打字的时候误触碰触摸板，光标乱跑，可以使用滚轮用于翻页 help mouse
+vim.opt.mouse = "nc"
+-- 设置光标距离屏幕边缘的最小行数，在不满足设置的距离时该值无效果
+vim.opt.scrolloff = 20
+-- 直接和系统剪贴板打通
+vim.opt.clipboard = "unnamed,unnamedplus"
