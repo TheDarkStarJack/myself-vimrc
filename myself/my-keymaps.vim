@@ -92,3 +92,9 @@ nnoremap <Space>d <C-d>
 nnoremap <Space>f <C-f>
 nnoremap <Space>b <C-b>
 nnoremap <Space>u <C-u>
+
+" 自动补全 单引号、双引号、括号 。在没有插件的时候可以开启设置
+" inoremap ' ''<ESC>i
+" inoremap " ""<ESC>i  
+" inoremap ( ()<ESC>i  
+" inoremap [ []<ESC>i  
