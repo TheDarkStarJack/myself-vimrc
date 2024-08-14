@@ -7,6 +7,11 @@ local opts = {
   silent = true, -- do not show message
 }
 
+local optn = {
+  noremap = true, -- non-recursive
+  silent = false,
+}
+
 -----------------
 -- Normal mode --
 -----------------
@@ -45,7 +50,7 @@ vim.keymap.set("i", "<S-Down>", "<Esc>Do<C-o>P", opts)
 
 -- 映射为从系统剪贴板粘贴内容
 vim.keymap.set("i", "<A-v>", "<C-r>+", opts)
-vim.keymap.set("c", "<A-v>", "<C-r>+", opts)
+vim.keymap.set("c", "<A-v>", "<C-r>+", optn)
 
 -- 文件保存
 vim.keymap.set("n", "q", ":q<CR>", opts)
