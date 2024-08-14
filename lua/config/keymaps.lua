@@ -74,15 +74,15 @@ vim.keymap.set("n", "<A-7>", "7gt", opts)
 vim.keymap.set("n", "<A-8>", "8gt", opts)
 vim.keymap.set("n", "<A-9>", "$gt", opts)
 
-vim.keymap.set("i", "<A-1>", ":1gt<CR>", opts)
-vim.keymap.set("i", "<A-2>", ":2gt<CR>", opts)
-vim.keymap.set("i", "<A-3>", ":3gt<CR>", opts)
-vim.keymap.set("i", "<A-4>", ":4gt<CR>", opts)
-vim.keymap.set("i", "<A-5>", ":5gt<CR>", opts)
-vim.keymap.set("i", "<A-6>", ":6gt<CR>", opts)
-vim.keymap.set("i", "<A-7>", ":7gt<CR>", opts)
-vim.keymap.set("i", "<A-8>", ":8gt<CR>", opts)
-vim.keymap.set("i", "<A-9>", ":$gt<CR>", opts)
+vim.keymap.set("i", "<A-1>", "<Esc>1gt<CR>", opts)
+vim.keymap.set("i", "<A-2>", "<Esc>2gt<CR>", opts)
+vim.keymap.set("i", "<A-3>", "<Esc>3gt<CR>", opts)
+vim.keymap.set("i", "<A-4>", "<Esc>4gt<CR>", opts)
+vim.keymap.set("i", "<A-5>", "<Esc>5gt<CR>", opts)
+vim.keymap.set("i", "<A-6>", "<Esc>6gt<CR>", opts)
+vim.keymap.set("i", "<A-7>", "<Esc>7gt<CR>", opts)
+vim.keymap.set("i", "<A-8>", "<Esc>8gt<CR>", opts)
+vim.keymap.set("i", "<A-9>", "<Esc>$gt<CR>", opts)
 
 vim.keymap.set("n", "<S-left>", ":tabp<CR>")
 vim.keymap.set("n", "<S-right>", ":tabnext<CR>")
@@ -199,3 +199,14 @@ end
 
 -- 将 save_with_date 函数绑定到命令 SaveWithDate
 vim.api.nvim_create_user_command("SaveWithDate", save_with_date, {})
+
+-- 加载本地配置内容
+-- local function load_myself_local_config()
+--   local local_path = vim.fn.stdpath("config")
+--   for i = 1, 10, 1 do
+--     f1 =
+--   end
+--   local conf = {
+--
+--   }
+-- end
