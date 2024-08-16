@@ -72,7 +72,7 @@ vim.keymap.set("n", "<A-5>", "5gt", opts)
 vim.keymap.set("n", "<A-6>", "6gt", opts)
 vim.keymap.set("n", "<A-7>", "7gt", opts)
 vim.keymap.set("n", "<A-8>", "8gt", opts)
-vim.keymap.set("n", "<A-9>", "$gt", opts)
+vim.keymap.set("n", "<A-9>", ":tablast<CR>", opts)
 
 vim.keymap.set("i", "<A-1>", "<Esc>1gt<CR>", opts)
 vim.keymap.set("i", "<A-2>", "<Esc>2gt<CR>", opts)
@@ -82,14 +82,14 @@ vim.keymap.set("i", "<A-5>", "<Esc>5gt<CR>", opts)
 vim.keymap.set("i", "<A-6>", "<Esc>6gt<CR>", opts)
 vim.keymap.set("i", "<A-7>", "<Esc>7gt<CR>", opts)
 vim.keymap.set("i", "<A-8>", "<Esc>8gt<CR>", opts)
-vim.keymap.set("i", "<A-9>", "<Esc>$gt<CR>", opts)
+vim.keymap.set("i", "<A-9>", "<Esc>:tablast<CR>", opts)
 
 vim.keymap.set("n", "<S-left>", ":tabp<CR>")
 vim.keymap.set("n", "<S-right>", ":tabnext<CR>")
 
--- 新建标签页
-vim.keymap.set("n", "<C-n>", ":tabnew<CR>", opts)
-vim.keymap.set("i", "<C-n>", "<ESC>:tabnew<CR>", opts)
+-- 在最后一个标签页之后新建标签页，免得打乱原有的标签页顺序
+vim.keymap.set("n", "<C-n>", ":$tabnew<CR>", opts)
+vim.keymap.set("i", "<C-n>", "<ESC>:$tabnew<CR>", opts)
 
 -- 快捷移动类操作
 vim.keymap.set("i", "<C-a>", "<C-o>0", opts)
