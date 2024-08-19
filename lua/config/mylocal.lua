@@ -27,3 +27,24 @@ end
 
 -- 创建 CdVimCon 命令
 vim.api.nvim_create_user_command("CdVimCon", cd_vim_con, {})
+
+-- 切换临时目录
+local function cd_tmpdir()
+  local local_home = vim.fn.stdpath("data")
+  local tmpdir = local_home .. "/tmp"
+  if not vim.uv.fs_stat(tmpdir) then
+    vim.fn.mkdir(tmpdir)
+  end
+  vim.fn.chdir(tmpdir)
+end
+
+-- 创建 CdTmpDir 命令
+vim.api.nvim_create_user_command("CdTmpDir", cd_tmpdir, {})
+
+-- 个人笔记目录
+local function cd_notebook()
+  local notebook_dir = "D:\\OneDrive\\笔记"
+  vim.fn.chdir(notebook_dir)
+end
+
+vim.api.nvim_create_user_command("CdNotebook", cd_notebook, {})

@@ -151,7 +151,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- 打开 help 手册的时候在右侧显示，默认上下分页有点抽象
 vim.api.nvim_create_autocmd({ "FileType" }, {
   group = augroup("helpwin"),
-  pattern = "help",
+  pattern = { "help", "noice" },
   callback = function()
     vim.cmd("wincmd L")
   end,

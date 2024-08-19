@@ -16,6 +16,13 @@ bufferline.setup({
     -- numbers = function(opts)
     --   return string.format("%s|%s", opts.id, opts.raise(opts.ordinal))
     -- end,
-    numbers = "both",
+    -- 仅显示标签编号
+    numbers = "ordinal",
   },
 })
+
+-- 加载个人本地配置
+local local_file = vim.fn.stdpath("config") .. "/lua/config/mylocal.lua"
+if vim.uv.fs_stat(local_file) then
+  require("config.mylocal")
+end
