@@ -1,11 +1,7 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
--- require("config.autocmds")
--- require("config.keymaps")
--- require("config.options")
--- require("config.mylocal")
--- require("config.macro")
 
+-- 设置标签页的显示格式
 local bufferline = require("bufferline")
 bufferline.setup({
   options = {
@@ -26,3 +22,59 @@ local local_file = vim.fn.stdpath("config") .. "/lua/config/mylocal.lua"
 if vim.uv.fs_stat(local_file) then
   require("config.mylocal")
 end
+
+-- 设置 statusline
+local myself_line = require("lualine")
+local function PasteStatus()
+  return vim.o.paste and "[PASTE]" or ""
+  -- return "&paste?'PASTE':''"
+end
+
+myself_line.setup({
+  options = {
+    icons_enabled = true,
+    theme = "auto",
+    component_separators = { left = "", right = "" },
+    section_separators = { left = "", right = "" },
+    disabled_filetypes = {
+      statusline = {},
+      winbar = {},
+    },
+    ignore_focus = {},
+    always_divide_middle = true,
+    globalstatus = false,
+    refresh = {
+      statusline = 1000,
+      tabline = 1000,
+      winbar = 1000,
+    },
+  },
+  sections = {
+    lualine_a = { "mode" },
+    lualine_b = { "branch", "diff", "diagnostics" },
+    lualine_c = { "filename" },
+    lualine_x = { "encoding", "fileformat", "filetype" },
+    lualine_y = { "progress" },
+    lualine_z = { "location" },
+  },
+  inactive_sections = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = { "filename" },
+    lualine_x = { "location" },
+    lualine_y = {},
+    lualine_z = {},
+  },
+  tabline = {},
+  winbar = {},
+  inactive_winbar = {},
+  extensions = {},
+})
+
+-- vim.opt.statusline = vim.opt.statusline .. "%{&paste?'PASTE':''}"
+
+-- 设置 colorscheme
+vim.cmd([[colorscheme tokyonight-night]])
+
+-- 设置行高亮的属性
+vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })

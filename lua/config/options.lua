@@ -28,3 +28,10 @@ vim.opt.mouse = "nc"
 vim.opt.scrolloff = 20
 -- 直接和系统剪贴板打通
 vim.opt.clipboard = "unnamed,unnamedplus"
+
+-- 需要将配置写在 init.lua 文件中，不然会被 lazyvim 中的定义覆盖，为了减少修改的地方，直接通过 cmd 执行命令。也可以设置 g:colorscheme 和 lualine
+-- 设置 colorscheme
+-- vim.cmd([[colorscheme tokyonight-night]])
+--
+-- 设置行高亮的属性
+-- vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
