@@ -121,16 +121,34 @@ local function add_header()
       print("Header already exists.")
       return
     end
-
+    --[[
+    ---参考：https://noahnyy.github.io/posts/write-a-new-post/
+    ---固定帖子:
+    ---可以将一个或多个帖子固定到主页顶部，固定帖子将根据其发布日期按相反顺序排序。启用方式
+    ---pin: true
+    ---出于网站性能原因，默认情况下不会加载数学功能。但可以通过以下方式启用它：math: true
+    ---如果要将图像添加到文章内容的顶部，请通过以下方式指定图像的 URL: image: /path/to/image-file
+    ---
+    ---修改时间：
+    ----
+    ---  filename: getting-started             # the post filename without date and extension
+    ---  lastmod: 2020-04-13 00:38:56 +0800    # the post last modified date
+    ---    -
+    --]]
     header = {
       "---",
       "title: " .. filename,
       "#author: DarkStar",
       "date: " .. current_time .. "+0800",
+      "lastmod: " .. current_time .. "+0800",
       "categories: [, ]",
       "tags: []",
-      "summary: A brief summary of the document",
-      "keywords: [example, documentation, markdown]",
+      "#pin: true",
+      "#summary: A brief summary of the document",
+      "#keywords: [example, documentation, markdown]",
+      "#comments: false",
+      "#math: true",
+      "#image: ",
       "---",
       "",
     }
@@ -157,6 +175,7 @@ local function add_header()
       "#        AUTHOR: wxj (DarkStar), 2403220952@qq.com",
       "#  ORGANIZATION:.",
       "#       CREATED: " .. current_time,
+      "#       LASTMOD: ",
       "#      REVISION:  ---",
       "#===============================================================================",
       "",
