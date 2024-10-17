@@ -49,7 +49,7 @@ end
 
 vim.api.nvim_create_user_command("CdNotebook", cd_notebook, {})
 
--- 个人笔记目录
+-- 个人工具目录
 local function cd_toolsdir()
   local tools_dir = "\\\\wsl.localhost\\Fedora39\\data\\myself_configures"
   vim.fn.chdir(tools_dir)
@@ -57,3 +57,12 @@ end
 
 -- 创建 CdToolsDir 命令
 vim.api.nvim_create_user_command("CdToolsDir", cd_toolsdir, {})
+
+-- 工作目录
+local function cd_workdir()
+  local work_dir = "D:\\Work\\青莲\\客户"
+  vim.fn.chdir(work_dir)
+end
+
+-- 创建 CdWorkDir 命令
+vim.api.nvim_create_user_command("CdWorkDir", cd_workdir, {})
