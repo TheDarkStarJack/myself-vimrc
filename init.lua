@@ -25,10 +25,10 @@ end
 
 -- 设置 statusline
 local myself_line = require("lualine")
-local function PasteStatus()
-  return vim.o.paste and "[PASTE]" or ""
-  -- return "&paste?'PASTE':''"
-end
+-- local function PasteStatus()
+--   return vim.o.paste and "[PASTE]" or ""
+--   -- return "&paste?'PASTE':''"
+-- end
 
 myself_line.setup({
   options = {

@@ -66,3 +66,6 @@ end
 
 -- 创建 CdWorkDir 命令
 vim.api.nvim_create_user_command("CdWorkDir", cd_workdir, {})
+
+-- 配置 hosts
+vim.api.nvim_create_user_command("EHosts", "tabe C:\\Windows\\System32\\drivers\\etc\\hosts", {})

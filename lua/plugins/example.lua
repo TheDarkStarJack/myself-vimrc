@@ -190,4 +190,14 @@ return {
       },
     },
   },
+
+  -- add vim-easy-align
+  {
+    "junegunn/vim-easy-align",
+  },
+
+  -- add vim-text-process
+  {
+    "kywind3000/vim-text-process",
+  },
 }
