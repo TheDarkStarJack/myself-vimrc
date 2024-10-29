@@ -264,6 +264,31 @@ if index(g:bundle_group, 'textobj') >= 0
 
 	" 提供 uri/url 的文本对象，iu/au 表示
 	Plug 'jceb/vim-textobj-uri'
+
+	" Vim 对齐插件
+	Plug 'junegunn/vim-easy-align'
+
+	" Start interactive EasyAlign in visual mode (e.g. vipga)
+	xmap ga <Plug>(EasyAlign)
+
+	" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+	nmap ga <Plug>(EasyAlign)
+
+	" 关于Vim/NeoVim 的文本过滤器管理器
+	Plug 'skywind3000/vim-text-process'
+
+	" text-processor search path, a comma separated string
+	let g:textproc_root = '~/.vim/text'
+
+	" preview window split method: auto/vert/horizon
+	let g:textproc_split = 'auto'
+
+	" filter runner
+	let g:textproc_runner = {
+				\ 'py': 'python',
+				\ 'sh': '/usr/bin/bash',
+				\ 'awk': '/usr/bin/gawk -f',
+				\ }
 endif
 
 
