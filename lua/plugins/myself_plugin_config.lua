@@ -8,35 +8,38 @@ return {
   -- add vim-easy-align
   {
     "junegunn/vim-easy-align",
-    keys = function()
-      return {
-        {
-          "ga",
-          "<Plug>(EasyAlign)",
-          mode = { "x" },
-          desc = "Start interactive EasyAlign in visual mode (e.g. vipga)",
-        },
-        {
-          "ga",
-          "<Plug>(EasyAlign)",
-          mode = { "n" },
-          desc = "Start interactive EasyAlign for a motion/text object (e.g. gaip)",
-        },
-      }
-    end,
+    -- keymap = vim.keymap.set("x", "ga", "<Plug>(EasyAlign)", {}),
+    keymaps = {
+      vim.keymap.set("x", "ga", "<Plug>(EasyAlign)", {}),
+      vim.keymap.set("n", "ga", "<Plug>(EasyAlign)", {}),
+    },
   },
 
   -- add vim-text-process
   {
     "skywind3000/vim-text-process",
-    opts = {
-      textproc_root = "~/.vim/text",
-      textproc_split = "auto",
-      textproc_runner = {
-        py = "python",
-        sh = "bash",
-        awk = "gawk -f",
-      },
-    },
   },
+
+  -- 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
+  {
+    "kshenoy/vim-signature",
+  },
+
+  -- 用于在侧边符号栏显示 git/svn 的 diff
+  {
+    "mhinz/vim-signify",
+  },
+
+  -- 给不同语言提供字典补全，插入模式下 c-x c-k 触发
+  {
+    "skywind3000/vim-dict",
+  },
+
+  -- UI 增强，查看一些常用的键位
+  -- {
+  --   "skywind3000/vim-quickui",
+  --   opts = {
+  --     vim_dict_config = "'html':'html,javascript,css', 'markdown':'text'",
+  --   },
+  -- },
 }

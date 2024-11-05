@@ -78,3 +78,26 @@ vim.cmd([[colorscheme tokyonight-night]])
 
 -- 设置行高亮的属性
 vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
+
+-- 设置 vim-text-process
+vim.opt_globals = {
+  textproc_root = "~/.vim/text",
+
+  -- preview window split method: auto/vert/horizon
+  textproc_split = "auto",
+
+  -- filter runner
+  textproc_runner = {
+    py = "python",
+    sh = "bash",
+    awk = "gawk -f",
+  },
+}
+
+-- local vimdict = require("vim-dict")
+-- vimdict.setup = {
+--   opts = {
+--     -- 设定需要生效的文件类型，如果是 "*" 的话，代表所有类型
+--     apc_enable_ft = "'text':1, 'markdown':1, 'php':1",
+--   },
+-- }

@@ -60,7 +60,7 @@ vim.api.nvim_create_user_command("CdToolsDir", cd_toolsdir, {})
 
 -- 工作目录
 local function cd_workdir()
-  local work_dir = "D:\\Work\\青莲\\客户"
+  local work_dir = "D:\\BaiduSyncdisk\\Work\\青莲\\客户"
   vim.fn.chdir(work_dir)
 end
 
