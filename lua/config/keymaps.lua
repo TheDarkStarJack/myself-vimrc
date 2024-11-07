@@ -229,3 +229,12 @@ vim.api.nvim_create_user_command("SaveWithDate", save_with_date, {})
 --
 --   }
 -- end
+--
+-- 设置 sql-formatter 格式化
+-- local function sqlf(type)
+--   local sql_type = type
+--   local sqlcmd = "D:\\Lazyvim\\nvim-data\\mason\\bin\\sql-formatter.cmd"
+--   vim.cmd(sqlcmd .. "-l " .. sql_type)
+-- end
+--
+-- vim.api.nvim_create_user_command("sqlf", sqlf, {})

@@ -80,18 +80,14 @@ vim.cmd([[colorscheme tokyonight-night]])
 vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
 
 -- 设置 vim-text-process
-vim.opt_globals = {
-  textproc_root = "~/.vim/text",
 
-  -- preview window split method: auto/vert/horizon
-  textproc_split = "auto",
+vim.g.textproc_root = "~/.config/nvim/text"
+vim.g.textproc_split = "auto"
 
-  -- filter runner
-  textproc_runner = {
-    py = "python",
-    sh = "bash",
-    awk = "gawk -f",
-  },
+vim.g.textproc_runner = {
+  py = "python",
+  sh = "bash",
+  awk = "gawk -f",
 }
 
 -- local vimdict = require("vim-dict")
