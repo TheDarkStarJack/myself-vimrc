@@ -1,3 +1,6 @@
 # windows local config
 lua\\config\\mylocal.lua
 lua/config/mylocal.lua
+
+# lazy-lock.json
+lazy-lock.json
