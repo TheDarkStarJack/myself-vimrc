@@ -97,3 +97,31 @@ vim.g.textproc_runner = {
 --     apc_enable_ft = "'text':1, 'markdown':1, 'php':1",
 --   },
 -- }
+--
+-- 加载本地个性化配置
+
+-- 使用 HOME 目录下的路径
+local config_dir = vim.fn.expand("~") .. "/.config/nvim/mylocal"
+-- 或者可以使用 vim.env.HOME：
+-- local config_dir = vim.env.HOME .. "/.config/nvim/my-config"
+
+-- 检查目录是否存在
+local function directory_exists(path)
+  local stat = vim.loop.fs_stat(path)
+  return stat and stat.type == "directory"
+end
+
+-- 加载配置目录下的所有文件
+local function load_config_files()
+  for _, file in ipairs(vim.fn.readdir(config_dir)) do
+    local file_path = config_dir .. "/" .. file
+    if file:match("%.lua$") then
+      dofile(file_path) -- 加载 Lua 配置文件
+    end
+  end
+end
+
+-- 在启动时检查并加载配置
+if directory_exists(config_dir) then
+  load_config_files()
+end

@@ -42,4 +42,27 @@ return {
   --     vim_dict_config = "'html':'html,javascript,css', 'markdown':'text'",
   --   },
   -- },
+  --
+  -- vim 的数据库界面
+  {
+    "tpope/vim-dadbod",
+  },
+
+  {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql", "postgresql" }, lazy = true }, -- Optional
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
 }
