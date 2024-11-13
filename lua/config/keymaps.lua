@@ -101,6 +101,14 @@ vim.keymap.set("i", "<C-d>", "<C-o>dw", opts)
 -- 插入模式下向后删除至末尾
 vim.keymap.set("i", "<C-k>", "<C-o>D", opts)
 
+-----------------
+-- terminal mode --
+-----------------
+
+-- 退出 terminal 模式
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
+
 -- # 设置文件头 -------------------------- > {{{1
 -- 获取文件名和时间的通用函数
 local function get_filename_and_time()
@@ -218,23 +226,3 @@ end
 
 -- 将 save_with_date 函数绑定到命令 SaveWithDate
 vim.api.nvim_create_user_command("SaveWithDate", save_with_date, {})
-
--- 加载本地配置内容
--- local function load_myself_local_config()
---   local local_path = vim.fn.stdpath("config")
---   for i = 1, 10, 1 do
---     f1 =
---   end
---   local conf = {
---
---   }
--- end
---
--- 设置 sql-formatter 格式化
--- local function sqlf(type)
---   local sql_type = type
---   local sqlcmd = "D:\\Lazyvim\\nvim-data\\mason\\bin\\sql-formatter.cmd"
---   vim.cmd(sqlcmd .. "-l " .. sql_type)
--- end
---
--- vim.api.nvim_create_user_command("sqlf", sqlf, {})
