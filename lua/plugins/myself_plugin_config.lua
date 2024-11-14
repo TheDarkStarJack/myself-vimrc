@@ -61,18 +61,46 @@ return {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  -- { -- optional saghen/blink.cmp completion source
-  --   "saghen/blink.cmp",
-  --   opts = {
-  --     sources = {
-  --       -- add vim-dadbod-completion to your completion providers
-  --       completion = {
-  --         enabled_providers = { "lsp", "path", "snippets", "buffer", "dadbod" },
-  --       },
-  --       providers = {
-  --         dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-  --       },
-  --     },
-  --   },
-  -- },
+
+  -- add transparent
+  {
+    "xiyaowong/transparent.nvim",
+    opts = {
+      -- table: default groups
+      groups = {
+        "Normal",
+        "NormalNC",
+        "Comment",
+        "Constant",
+        "Special",
+        "Identifier",
+        "Statement",
+        "PreProc",
+        "Type",
+        "Underlined",
+        "Todo",
+        "String",
+        "Function",
+        "Conditional",
+        "Repeat",
+        "Operator",
+        "Structure",
+        "LineNr",
+        "NonText",
+        "SignColumn",
+        "CursorLine",
+        "CursorLineNr",
+        "StatusLine",
+        "StatusLineNC",
+        "EndOfBuffer",
+      },
+      -- table: additional groups that should be cleared
+      extra_groups = {},
+      -- table: groups you don't want to clear
+      exclude_groups = {},
+      -- function: code to be executed after highlight groups are cleared
+      -- Also the user event "TransparentClear" will be triggered
+      on_clear = function() end,
+    },
+  },
 }
