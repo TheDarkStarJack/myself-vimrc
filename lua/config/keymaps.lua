@@ -198,37 +198,37 @@ local function add_header()
   end
 
   header = {
-    " --SQL",
-    " --",
-    " --       FILE:" .. filename,
-    " --      USAGE: ",
-    " --",
-    " --     AUTHOR:",
-    " --      wxj (DarkStar), 2403220952@qq.com",
-    " --    CREATED: " .. current_time,
-    " --    LASTMOD:" .. current_time,
-    " --    CATEGORIES:",
-    " --      categories: [, ]",
-    " --      tags: []",
-    " --    NAME",
-    " --      " .. filename .. " - <>",
-    " --",
-    " --    DESCRIPTION:",
-    " --      <>",
-    " --",
-    " --    NOTES:",
-    " --      <>",
-    " --",
-    " --    MODIFIED:",
-    " --    author: DarkStar  " .. current_time,
-    " --",
+    "--SQL",
+    "--",
+    "--       FILE:" .. filename,
+    "--      USAGE: ",
+    "--",
+    "--     AUTHOR:",
+    "--      wxj (DarkStar), 2403220952@qq.com",
+    "--    CREATED: " .. current_time,
+    "--    LASTMOD:" .. current_time,
+    "--    CATEGORIES:",
+    "--      categories: [, ]",
+    "--      tags: []",
+    "--    NAME",
+    "--      " .. filename .. " - <>",
+    "--",
+    "--    DESCRIPTION:",
+    "--      <>",
+    "--",
+    "--    NOTES:",
+    "--      <>",
+    "--",
+    "--    MODIFIED:",
+    "--    author: DarkStar  " .. current_time,
+    "--",
   }
 
   if next(header) ~= nil then
     vim.fn.append(0, header)
   else
     vim.api.nvim_echo(
-      { { "Please add file header information, currently supports markdown and bash types.", "WarningMsg" } },
+      { { "Please add file header information, currently supports markdown and bash 、sql types.", "WarningMsg" } },
       false,
       {}
     )
