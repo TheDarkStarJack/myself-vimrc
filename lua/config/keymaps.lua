@@ -206,7 +206,7 @@ local function add_header()
     " --     AUTHOR:",
     " --      wxj (DarkStar), 2403220952@qq.com",
     " --    CREATED: " .. current_time,
-    " --    LASTMOD:" .. current_time .. "+0800",
+    " --    LASTMOD:" .. current_time,
     " --    CATEGORIES:",
     " --      categories: [, ]",
     " --      tags: []",
@@ -258,3 +258,44 @@ end
 
 -- 将 save_with_date 函数绑定到命令 SaveWithDate
 vim.api.nvim_create_user_command("SaveWithDate", save_with_date, {})
+--
+-- -- 设置 neovide 透明度
+-- local function set_neovide_transparency(rang)
+--   if vim.g.neovide then
+--     -- Setting g:neovide_transparency to a value between 0.0 and 1.0 will set the opacity of the window to that value.
+--     vim.g.neovide_transparency = rang
+--   end
+-- end
+--
+-- vim.api.nvim_create_user_command("Tran", set_neovide_transparency(0.8), optn)
+-- vim.api.nvim_create_user_command("TranReset", set_neovide_transparency(1.0), optn)
+-- 设置 neovide 透明度
+local function set_neovide_transparency(range)
+  if vim.g.neovide then
+    -- 设置透明度（值在 0.0 到 1.0 之间）
+    vim.g.neovide_transparency = range
+    vim.notify("Neovide Transparency set to " .. range, vim.log.levels.INFO)
+  else
+    vim.notify("Neovide is not enabled!", vim.log.levels.WARN)
+  end
+end
+
+-- 创建用户命令 Tran，用于动态设置透明度
+vim.api.nvim_create_user_command("Tran", function(opts)
+  local range = tonumber(opts.args) or 1.0 -- 默认透明度为 1.0
+  if range >= 0.0 and range <= 1.0 then
+    set_neovide_transparency(range)
+  else
+    vim.notify("Invalid transparency value! Please provide a number between 0.0 and 1.0.", vim.log.levels.ERROR)
+  end
+end, {
+  nargs = 1, -- 需要一个参数
+  desc = "Set Neovide transparency (0.0 - 1.0)",
+})
+
+-- 创建用户命令 TranReset，恢复透明度为 1.0
+vim.api.nvim_create_user_command("TranReset", function()
+  set_neovide_transparency(1.0)
+end, {
+  desc = "Reset Neovide transparency to 1.0",
+})

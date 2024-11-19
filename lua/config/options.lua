@@ -35,3 +35,11 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 --
 -- 设置行高亮的属性
 -- vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
+
+-- -- 设置 shell terminal
+-- if jit.os == "Windows" then
+--   vim.opt.shell = "powershell.exe"
+-- else
+--   vim.opt.shell = "bash.exe"
+-- end
+--
