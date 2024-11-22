@@ -195,34 +195,34 @@ local function add_header()
       print("Header already exists.")
       return
     end
-  end
 
-  header = {
-    "--SQL",
-    "--",
-    "--       FILE:" .. filename,
-    "--      USAGE: ",
-    "--",
-    "--     AUTHOR:",
-    "--      wxj (DarkStar), 2403220952@qq.com",
-    "--    CREATED: " .. current_time,
-    "--    LASTMOD:" .. current_time,
-    "--    CATEGORIES:",
-    "--      categories: [, ]",
-    "--      tags: []",
-    "--    NAME",
-    "--      " .. filename .. " - <>",
-    "--",
-    "--    DESCRIPTION:",
-    "--      <>",
-    "--",
-    "--    NOTES:",
-    "--      <>",
-    "--",
-    "--    MODIFIED:",
-    "--    author: DarkStar  " .. current_time,
-    "--",
-  }
+    header = {
+      "--SQL",
+      "--",
+      "--       FILE:" .. filename,
+      "--      USAGE: ",
+      "--",
+      "--     AUTHOR:",
+      "--      wxj (DarkStar), 2403220952@qq.com",
+      "--    CREATED: " .. current_time,
+      "--    LASTMOD:" .. current_time,
+      "--    CATEGORIES:",
+      "--      categories: [, ]",
+      "--      tags: []",
+      "--    NAME",
+      "--      " .. filename .. " - <>",
+      "--",
+      "--    DESCRIPTION:",
+      "--      <>",
+      "--",
+      "--    NOTES:",
+      "--      <>",
+      "--",
+      "--    MODIFIED:",
+      "--    author: DarkStar  " .. current_time,
+      "--",
+    }
+  end
 
   if next(header) ~= nil then
     vim.fn.append(0, header)
