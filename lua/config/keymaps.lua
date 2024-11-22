@@ -299,3 +299,13 @@ vim.api.nvim_create_user_command("TranReset", function()
 end, {
   desc = "Reset Neovide transparency to 1.0",
 })
+
+--
+-- 定义透明度切换的快捷键
+vim.keymap.set({ "n", "i" }, "<A-t>", function()
+  set_neovide_transparency(0.8)
+end, { desc = "Set Neovide transparency to 0.8" })
+
+vim.keymap.set({ "n", "i" }, "<A-r>", function()
+  set_neovide_transparency(1.0)
+end, { desc = "Reset Neovide transparency to 1.0" })
