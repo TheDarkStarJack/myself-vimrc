@@ -109,6 +109,18 @@ vim.keymap.set("i", "<C-k>", "<C-o>D", opts)
 
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", opts)
 
+-----------------
+-- command mode --
+-----------------
+--- Crtl+a/e 快速移动到行首行尾
+--- 在命令行模式下，<Home> 和 <End> 并非通用快捷键（依赖于终端设置），而 <C-B>（移动到行首）和 <C-E>（移动到行尾）是内置行为，跨平台兼容性更好。
+--- https://neovim.io/doc/user/cmdline.html
+--- 不知道什么鬼 <Home> <C-b> <C-B> 都需要在按键之后在按下其他键才会移动行首/尾部 <Home><Left> 都不行，后续有时间在研究
+-- vim.keymap.set("c", "<C-a>", "<Home>", opts)
+-- vim.keymap.set("c", "<C-e>", "<End>", opts)
+vim.keymap.set("c", "<C-a>", "<C-B>", opts)
+vim.keymap.set("c", "<C-e>", "<C-E>", opts)
+
 -- # 设置文件头 -------------------------- > {{{1
 -- 获取文件名和时间的通用函数
 local function get_filename_and_time()
