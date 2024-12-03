@@ -62,6 +62,11 @@ return {
     end,
   },
 
+  -- add bpftrace.vim
+  {
+    "mmarchini/bpftrace.vim",
+  },
+
   -- add transparent
   --   {
   --     "xiyaowong/transparent.nvim",
