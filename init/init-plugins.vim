@@ -941,6 +941,9 @@ if index(g:bundle_group, 'dev') >= 0
 	" Resume latest coc list
 	nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 	" coc.nvim 配置 结束=========
+        "
+        " bpftrace
+        Plug 'mmarchini/bpftrace.vim'
 endif
 
 " => 个人插件 --------------------------------------------------------- {{{1
