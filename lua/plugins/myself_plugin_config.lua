@@ -67,6 +67,11 @@ return {
     "mmarchini/bpftrace.vim",
   },
 
+  -- add aperezdc/vim-template
+  {
+    "aperezdc/vim-template",
+  },
+
   -- add transparent
   --   {
   --     "xiyaowong/transparent.nvim",

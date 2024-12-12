@@ -43,3 +43,5 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 --   vim.opt.shell = "bash.exe"
 -- end
 --
+-- 设置 netrw 本地缓存路径，远程编辑的时候正确加载远程文件内容
+vim.g.netrw_localrmdir = vim.fn.stdpath("data") .. "/netrw_cache"
