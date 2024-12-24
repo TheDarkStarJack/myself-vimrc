@@ -113,4 +113,9 @@ return {
   --       on_clear = function() end,
   --     },
   --   },
+
+  -- add github/copilot.vim
+  {
+    "github/copilot.vim",
+  },
 }
