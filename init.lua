@@ -17,12 +17,6 @@ bufferline.setup({
   },
 })
 
--- 加载个人本地配置
-local local_file = vim.fn.stdpath("config") .. "/lua/config/mylocal.lua"
-if vim.uv.fs_stat(local_file) then
-  require("config.mylocal")
-end
-
 -- 设置 statusline
 local myself_line = require("lualine")
 -- local function PasteStatus()
@@ -81,7 +75,15 @@ vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
 
 -- 设置 vim-text-process
 
-vim.g.textproc_root = "~/.config/nvim/text"
+vim.g.textproc_root = function()
+  if vim.fn.isdirectory("D:\\BaiduSyncdisk\\nvim\\text") then
+    return "D:\\BaiduSyncdisk\\nvim\\text"
+  elseif vim.fn.isdirectory("F:\\BaiduSyncdisk\\nvim\\text") then
+    return "F:\\BaiduSyncdisk\\nvim\\text"
+  else
+    return "~/.config/nvim/text"
+  end
+end
 vim.g.textproc_split = "auto"
 
 vim.g.textproc_runner = {
@@ -101,7 +103,16 @@ vim.g.textproc_runner = {
 -- 加载本地个性化配置
 
 -- 使用 HOME 目录下的路径
-local config_dir = vim.fn.expand("~") .. "/.config/nvim/mylocal"
+local config_dir = function()
+  -- 如果存在目录 D:\BaiduSyncdisk\nvim 的话，就使用这个目录，否则使用 HOME 目录
+  if vim.fn.isdirectory("D:\\BaiduSyncdisk\\nvim\\mylocal") then
+    return "D:\\BaiduSyncdisk\\nvim\\mylocal"
+  elseif vim.fn.isdirectory("F:\\BaiduSyncdisk\\nvim\\mylocal") then
+    return "F:\\BaiduSyncdisk\\nvim\\mylocal"
+  else
+    return vim.fn.expand("~") .. "/.config/nvim/mylocal"
+  end
+end
 -- 或者可以使用 vim.env.HOME：
 -- local config_dir = vim.env.HOME .. "/.config/nvim/my-config"
 
