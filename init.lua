@@ -73,13 +73,29 @@ vim.cmd([[colorscheme tokyonight-night]])
 -- 设置行高亮的属性
 vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
 
+-- 加载本地个性化配置
+
+-- 使用 HOME 目录下的路径
+-- config BaiduSyncdisk path and other path
+vim.g.baiduyun = function()
+  local local_home = vim.fn.stdpath("data")
+  if vim.fn.isdirectory("D:\\BaiduSyncdisk") then
+    return "D:\\BaiduSyncdisk"
+  elseif vim.fn.isdirectory("F:\\BaiduSyncdisk") then
+    return "F:\\BaiduSyncdisk"
+  else
+    return local_home
+  end
+end
+local config_dir = vim.g.baiduyun() .. "\\nvim\\mylocal"
+
 -- 设置 vim-text-process
 
 vim.g.textproc_root = function()
-  if vim.fn.isdirectory("D:\\BaiduSyncdisk\\nvim\\text") then
-    return "D:\\BaiduSyncdisk\\nvim\\text"
-  elseif vim.fn.isdirectory("F:\\BaiduSyncdisk\\nvim\\text") then
-    return "F:\\BaiduSyncdisk\\nvim\\text"
+  if vim.fn.isdirectory(vim.g.baiduyun() .. "\\nvim\\text") then
+    return vim.g.baiduyun() .. "\\nvim\\text"
+  elseif vim.fn.isdirectory(vim.g.baiduyun() .. "\\nvim\\text") then
+    return vim.g.baiduyun() .. "\\nvim\\text"
   else
     return "~/.config/nvim/text"
   end
@@ -100,21 +116,6 @@ vim.g.textproc_runner = {
 --   },
 -- }
 --
--- 加载本地个性化配置
-
--- 使用 HOME 目录下的路径
-local config_dir = function()
-  -- 如果存在目录 D:\BaiduSyncdisk\nvim 的话，就使用这个目录，否则使用 HOME 目录
-  if vim.fn.isdirectory("D:\\BaiduSyncdisk\\nvim\\mylocal") then
-    return "D:\\BaiduSyncdisk\\nvim\\mylocal"
-  elseif vim.fn.isdirectory("F:\\BaiduSyncdisk\\nvim\\mylocal") then
-    return "F:\\BaiduSyncdisk\\nvim\\mylocal"
-  else
-    return vim.fn.expand("~") .. "/.config/nvim/mylocal"
-  end
-end
--- 或者可以使用 vim.env.HOME：
--- local config_dir = vim.env.HOME .. "/.config/nvim/my-config"
 
 -- 检查目录是否存在
 local function directory_exists(path)
