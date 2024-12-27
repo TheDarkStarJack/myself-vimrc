@@ -53,7 +53,7 @@ vim.keymap.set("i", "<A-v>", "<C-r>+", opts)
 vim.keymap.set("c", "<A-v>", "<C-r>+", optn)
 
 -- 文件保存
-vim.keymap.set("n", "q", ":q<CR>", opts)
+vim.keymap.set("n", "<A-q>", ":x<CR>", opts)
 vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
 vim.keymap.set("n", "<C-s>", ":w<CR>", opts)
 
