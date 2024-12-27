@@ -77,27 +77,32 @@ vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
 
 -- 使用 HOME 目录下的路径
 -- config BaiduSyncdisk path and other path
+local homebdy = "H:\\BaiduSyncdisk"
+local workbdy = "D:\\BaiduSyncdisk"
+local local_home = vim.fn.stdpath("data")
+local mylocal_dir = "\\nvim\\mylocal"
 vim.g.baiduyun = function()
-  local local_home = vim.fn.stdpath("data")
-  if vim.fn.isdirectory("D:\\BaiduSyncdisk") then
-    return "D:\\BaiduSyncdisk"
-  elseif vim.fn.isdirectory("F:\\BaiduSyncdisk") then
-    return "F:\\BaiduSyncdisk"
+  if vim.fn.isdirectory(workbdy) then
+    return workbdy
+  elseif vim.fn.isdirectory(homebdy) then
+    return homebdy
   else
     return local_home
   end
 end
-local config_dir = vim.g.baiduyun() .. "\\nvim\\mylocal"
+local config_dir = vim.g.baiduyun() .. mylocal_dir
 
 -- 设置 vim-text-process
 
 vim.g.textproc_root = function()
-  if vim.fn.isdirectory(vim.g.baiduyun() .. "\\nvim\\text") then
-    return vim.g.baiduyun() .. "\\nvim\\text"
-  elseif vim.fn.isdirectory(vim.g.baiduyun() .. "\\nvim\\text") then
-    return vim.g.baiduyun() .. "\\nvim\\text"
+  local text_dir = "\\nvim\\text"
+  local text_dir2 = "~/.config/nvim/text"
+  if vim.fn.isdirectory(vim.g.baiduyun() .. text_dir) then
+    return vim.g.baiduyun() .. text_dir
+  elseif vim.fn.isdirectory(vim.g.baiduyun() .. text_dir) then
+    return vim.g.baiduyun() .. text_dir
   else
-    return "~/.config/nvim/text"
+    return text_dir2
   end
 end
 vim.g.textproc_split = "auto"
