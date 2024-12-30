@@ -82,16 +82,17 @@ local workbdy = "D:\\BaiduSyncdisk"
 local local_home = vim.fn.stdpath("data")
 local mylocal_dir = "\\nvim\\mylocal"
 vim.g.baiduyun = function()
-  if vim.fn.isdirectory(workbdy) then
+  if vim.fn.isdirectory(workbdy) > 0 then
     return workbdy
-  elseif vim.fn.isdirectory(homebdy) then
+  elseif vim.fn.isdirectory(homebdy) > 0 then
     return homebdy
   else
     return local_home
   end
 end
 local config_dir = vim.g.baiduyun() .. mylocal_dir
-
+-- vim.notify(vim.fn.isdirectory(homebdy))
+-- vim.notify("Config directory: " .. config_dir)
 -- 设置 vim-text-process
 
 vim.g.textproc_root = function()
@@ -124,7 +125,7 @@ vim.g.textproc_runner = {
 
 -- 检查目录是否存在
 local function directory_exists(path)
-  local stat = vim.loop.fs_stat(path)
+  local stat = vim.uv.fs_stat(path)
   return stat and stat.type == "directory"
 end
 
