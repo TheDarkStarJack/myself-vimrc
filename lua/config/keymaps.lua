@@ -137,7 +137,7 @@ local function add_header()
   local header = {}
 
   if filetype == "markdown" then
-    if vim.fn.getline(1) == "^---" then
+    if vim.fn.getline(1) == "---" then
       print("Header already exists.")
       return
     end
@@ -173,7 +173,7 @@ local function add_header()
       "",
     }
   elseif filetype == "sh" then
-    if vim.fn.getline(1) == "^#!/bin/bash -" then
+    if vim.fn.getline(1) == "#!/bin/bash -" then
       print("Header already exists.")
       return
     end
@@ -202,7 +202,7 @@ local function add_header()
       "",
     }
   elseif filetype == "sql" then
-    if vim.fn.getline(1) == "^--SQL" then
+    if vim.fn.getline(1) == "--SQL" then
       print("Header already exists.")
       return
     end
@@ -245,7 +245,8 @@ local function add_header()
   end
 end
 
-vim.keymap.set({ "n", "i" }, "<C-m>", add_header, opts)
+-- vim.keymap.set({ "n", "i" }, "<C-m>", add_header, opts)
+vim.keymap.set("n", "<C-h>", add_header, opts)
 
 -- 保存文件并添加日期前缀的函数
 local function save_with_date()
