@@ -91,6 +91,10 @@ return {
     },
     dependencies = {
       "kkharji/sqlite.lua",
+      init = function()
+        -- 设置全局变量 sqlite_clib_path
+        vim.g.sqlite_clib_path = vim.g.baiduyun .. "\\software\\sqlite3\\sqlite-dll-win-x64-3470200\\sqlite3.dll"
+      end,
     },
     opts = {
       dir = vim.g.baiduyun .. "\\software\\ecdict-ultimate-sqlite",

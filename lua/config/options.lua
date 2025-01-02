@@ -46,4 +46,4 @@ vim.opt.clipboard = "unnamed,unnamedplus"
 -- 设置 netrw 本地缓存路径，远程编辑的时候正确加载远程文件内容
 vim.g.netrw_localrmdir = vim.fn.stdpath("data") .. "/netrw_cache"
 -- 设置全局sqlite本地环境变量
-vim.g.sqlite_clib_path = vim.g.baiduyun .. "\\software\\sqlite3\\sqlite-dll-win-x64-3470200\\sqlite3.dll"
+-- vim.g.sqlite_clib_path = vim.g.baiduyun .. "\\software\\sqlite3\\sqlite-dll-win-x64-3470200\\sqlite3.dll"
