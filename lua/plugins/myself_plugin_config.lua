@@ -72,49 +72,36 @@ return {
     "aperezdc/vim-template",
   },
 
-  -- add transparent
-  --   {
-  --     "xiyaowong/transparent.nvim",
-  --     opts = {
-  --       -- table: default groups
-  --       groups = {
-  --         "Normal",
-  --         "NormalNC",
-  --         "Comment",
-  --         "Constant",
-  --         "Special",
-  --         "Identifier",
-  --         "Statement",
-  --         "PreProc",
-  --         "Type",
-  --         "Underlined",
-  --         "Todo",
-  --         "String",
-  --         "Function",
-  --         "Conditional",
-  --         "Repeat",
-  --         "Operator",
-  --         "Structure",
-  --         "LineNr",
-  --         "NonText",
-  --         "SignColumn",
-  --         "CursorLine",
-  --         "CursorLineNr",
-  --         "StatusLine",
-  --         "StatusLineNC",
-  --         "EndOfBuffer",
-  --       },
-  --       -- table: additional groups that should be cleared
-  --       extra_groups = {},
-  --       -- table: groups you don't want to clear
-  --       exclude_groups = {},
-  --       -- function: code to be executed after highlight groups are cleared
-  --       -- Also the user event "TransparentClear" will be triggered
-  --       on_clear = function() end,
-  --     },
-  --   },
+  -- 翻译插件
+  -- 需要提供 api key
+  -- "uga-rosa/translate.nvim",
+  {
+    --
+    "JuanZoran/Trans.nvim",
+    -- Windows下无法正常使用install，需要手动安装 ecdict https://github.com/skywind3000/ECDICT-ultimate/releases
+    -- build = function()
+    --   require("Trans").install()
+    -- end,
+    keys = {
+      -- 可以换成其他你想映射的键
+      { "mm", mode = { "n", "x" }, "<Cmd>Translate<CR>", desc = "󰊿 Translate" },
+      { "mk", mode = { "n", "x" }, "<Cmd>TransPlay<CR>", desc = " Auto Play" },
+      -- 目前这个功能的视窗还没有做好，可以在配置里将view.i改成hover
+      { "mi", "<Cmd>TranslateInput<CR>", desc = "󰊿 Translate From Input" },
+    },
+    dependencies = {
+      "kkharji/sqlite.lua",
+    },
+    opts = {
+      dir = vim.g.baiduyun .. "\\software\\ecdict-ultimate-sqlite",
+    },
+  },
+  {
+    -- 支持交互式翻译，多种翻译引擎，需要梯子
+    "potamides/pantran.nvim",
+  },
 
-  -- add github/copilot.vim
+  -- add github/copilot.vim ai 代码补全
   {
     "github/copilot.vim",
   },

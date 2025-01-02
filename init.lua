@@ -1,3 +1,20 @@
+-- config BaiduSyncdisk path and other path
+-- 先于 LazyVim 配置文件设置，LazyVim 的插件配置通常会在初始化过程中延迟加载。导致 vim.g.baiduyun 在插件使用时还没有被正确赋值。
+local homebdy = "H:\\BaiduSyncdisk"
+local workbdy = "D:\\BaiduSyncdisk"
+local local_home = vim.fn.stdpath("data")
+local mylocal_dir = "\\nvim\\mylocal"
+local function set_baiduyun()
+  if vim.fn.isdirectory(workbdy) > 0 then
+    return workbdy
+  elseif vim.fn.isdirectory(homebdy) > 0 then
+    return homebdy
+  else
+    return local_home
+  end
+end
+vim.g.baiduyun = set_baiduyun()
+
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
 
@@ -75,39 +92,22 @@ vim.api.nvim_set_hl(0, "CursorLine", { ctermbg = "DarkCyan", bg = "#000000" })
 
 -- 加载本地个性化配置
 
--- 使用 HOME 目录下的路径
--- config BaiduSyncdisk path and other path
-local homebdy = "H:\\BaiduSyncdisk"
-local workbdy = "D:\\BaiduSyncdisk"
-local local_home = vim.fn.stdpath("data")
-local mylocal_dir = "\\nvim\\mylocal"
-vim.g.baiduyun = function()
-  if vim.fn.isdirectory(workbdy) > 0 then
-    return workbdy
-  elseif vim.fn.isdirectory(homebdy) > 0 then
-    return homebdy
-  else
-    return local_home
-  end
-end
-local config_dir = vim.g.baiduyun() .. mylocal_dir
+local config_dir = vim.g.baiduyun .. mylocal_dir
 -- vim.notify(vim.fn.isdirectory(homebdy))
 -- vim.notify("Config directory: " .. config_dir)
 -- 设置 vim-text-process
 
-vim.g.textproc_root = function()
+local function set_textproc_root()
   local text_dir = "\\nvim\\text"
   local text_dir2 = "~/.config/nvim/text"
-  if vim.fn.isdirectory(vim.g.baiduyun() .. text_dir) then
-    return vim.g.baiduyun() .. text_dir
-  elseif vim.fn.isdirectory(vim.g.baiduyun() .. text_dir) then
-    return vim.g.baiduyun() .. text_dir
+  if vim.fn.isdirectory(vim.g.baiduyun .. text_dir) > 0 then
+    return vim.g.baiduyun .. text_dir
   else
     return text_dir2
   end
 end
 vim.g.textproc_split = "auto"
-
+vim.g.textproc_root = set_textproc_root()
 vim.g.textproc_runner = {
   py = "python",
   sh = "bash",
