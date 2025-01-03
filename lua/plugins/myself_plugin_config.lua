@@ -109,4 +109,13 @@ return {
   {
     "github/copilot.vim",
   },
+
+  -- whitestarrain/md-section-number.nvim markdown 章节编号
+  {
+    "whitestarrain/md-section-number.nvim",
+    ft = "markdown",
+    config = function()
+      require("md-section-number").setup()
+    end,
+  },
 }
