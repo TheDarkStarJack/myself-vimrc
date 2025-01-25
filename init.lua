@@ -1,6 +1,6 @@
 -- config BaiduSyncdisk path and other path
 -- 先于 LazyVim 配置文件设置，LazyVim 的插件配置通常会在初始化过程中延迟加载。导致 vim.g.baiduyun 在插件使用时还没有被正确赋值。
-local homebdy = "H:\\BaiduSyncdisk"
+local homebdy = "E:\\BaiduSyncdisk"
 local workbdy = "D:\\BaiduSyncdisk"
 local local_home = vim.fn.stdpath("data")
 local mylocal_dir = "\\nvim\\mylocal"
