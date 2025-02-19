@@ -113,9 +113,19 @@ return {
   -- whitestarrain/md-section-number.nvim markdown 章节编号
   {
     "whitestarrain/md-section-number.nvim",
-    ft = "markdown",
+    ft = { "markdown", "md" },
     config = function()
       require("md-section-number").setup()
+    end,
+  },
+
+  -- 中英文自动空格
+  {
+    "hotoo/pangu.vim",
+    ft = { "markdown", "md", "txt", "text", "vimwiki", "wiki" },
+    -- 设置一个全局变量，用于控制是否启用日期格式化
+    init = function()
+      vim.g.pangu_spacing = 1
     end,
   },
 }
