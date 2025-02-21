@@ -140,4 +140,12 @@ return {
       })
     end,
   },
+
+  -- 项目管理
+  {
+    "ahmedkhalf/project.nvim",
+    config = function()
+      require("project_nvim").setup()
+    end,
+  },
 }
