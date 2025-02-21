@@ -128,4 +128,16 @@ return {
       vim.g.pangu_spacing = 1
     end,
   },
+
+  -- java 开发插件
+  {
+    "mfussenegger/nvim-jdtls",
+    ft = { "java" },
+    config = function()
+      require("jdtls").start_or_attach({
+        cmd = { "jdtls" },
+        root_dir = require("jdtls.setup").find_root({ ".git", "pom.xml" }),
+      })
+    end,
+  },
 }
