@@ -317,3 +317,6 @@ end, { desc = "Set Neovide transparency to 0.8" })
 vim.keymap.set({ "n", "i" }, "<A-r>", function()
   set_neovide_transparency(1.0)
 end, { desc = "Reset Neovide transparency to 1.0" })
+
+-- 通过 <M-=> 调用 ToggleTermToggleAll 命令，唤醒/隐藏所有终端窗口
+vim.keymap.set({ "n", "i" }, "<M-=>", ":ToggleTermToggleAll<CR>", opts)
