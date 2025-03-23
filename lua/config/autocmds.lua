@@ -156,3 +156,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.cmd("wincmd L")
   end,
 })
+
+-- 设置 autochdir
+vim.opt.autochdir = true
