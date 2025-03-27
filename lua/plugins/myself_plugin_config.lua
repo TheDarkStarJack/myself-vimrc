@@ -243,6 +243,24 @@ return {
   -- 添加 terminal 终端支持
   {
     "akinsho/nvim-toggleterm.lua",
+    init = function()
+      if vim.fn.has("win32") then
+        local powershell_options = {
+          -- 需要从 Windows Terminal 或者 pwsh 中启动，直接通过 neovide icon或者Windows快捷启动，环境变量会有问题，无法正确加载pwsh，只能找到powershell
+          -- 找到相同的issue ： https://github.com/neovide/neovide/issues/2362
+          shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
+          shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+          shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+          shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+          shellquote = "",
+          shellxquote = "",
+        }
+
+        for option, value in pairs(powershell_options) do
+          vim.opt[option] = value
+        end
+      end
+    end,
     config = function()
       require("toggleterm").setup({
         size = 20,
