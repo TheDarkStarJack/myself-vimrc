@@ -58,10 +58,10 @@ vim.keymap.set("i", "<C-s>", "<Esc>:w<CR>", opts)
 vim.keymap.set("n", "<C-s>", ":w<CR>", opts)
 
 -- 翻页
-vim.keymap.set("n", "<Space>d", "<C-d>", opts)
-vim.keymap.set("n", "<Space>f", "<C-f>", opts)
-vim.keymap.set("n", "<Space>b", "<C-b>", opts)
-vim.keymap.set("n", "<Space>u", "<C-u>", opts)
+-- vim.keymap.set("n", "<Space>d", "<C-d>", opts)
+-- vim.keymap.set("n", "<Space>f", "<C-f>", opts)
+-- vim.keymap.set("n", "<Space>b", "<C-b>", opts)
+-- vim.keymap.set("n", "<Space>u", "<C-u>", opts)
 
 -- 切换标签页
 vim.keymap.set("n", "<A-1>", "1gt", opts)

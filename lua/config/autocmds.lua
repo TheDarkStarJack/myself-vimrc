@@ -204,8 +204,10 @@ local powershell_script_path = vim.g.baiduyun .. "\\Scripts\\PowerShell\\switch_
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   group = augroup("switch_input_method"),
   callback = function()
-    -- 使用 PowerShell 执行脚本
-    vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+    if vim.fn.has("win32") or vim.fn.has("win64") == 1 then
+      -- 使用 PowerShell 执行脚本
+      vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+    end
   end,
 })
 
@@ -213,6 +215,9 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
 vim.api.nvim_create_autocmd({ "InsertLeave", "InsertEnter" }, {
   group = augroup("switch_input_method"),
   callback = function()
-    vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+    if vim.fn.has("win32") or vim.fn.has("win64") == 1 then
+      -- 在 Windows 上执行 PowerShell 命令
+      vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+    end
   end,
 })
