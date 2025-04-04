@@ -281,7 +281,8 @@ vim.api.nvim_create_user_command("SaveWithDate", save_with_date, {})
 local function set_neovide_transparency(range)
   if vim.g.neovide then
     -- 设置透明度（值在 0.0 到 1.0 之间）
-    vim.g.neovide_transparency = range
+    -- vim.g.neovide_transparency = range
+    vim.g.neovide_opacity = range
     vim.notify("Neovide Transparency set to " .. range, vim.log.levels.INFO)
   else
     vim.notify("Neovide is not enabled!", vim.log.levels.WARN)
