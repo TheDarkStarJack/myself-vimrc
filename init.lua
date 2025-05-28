@@ -34,6 +34,17 @@ bufferline.setup({
   },
 })
 
+-- 禁用 blink.cmp 自动选择第一个补全项，干扰 enter 的换行
+local cmp = require("blink.cmp")
+cmp.setup({
+  options = {
+    completion = { list = { selection = {
+      preselect = false,
+      auto_insert = false,
+    } } },
+  },
+})
+
 -- 设置 statusline
 local myself_line = require("lualine")
 -- local function PasteStatus()
@@ -143,3 +154,20 @@ end
 if directory_exists(config_dir) then
   load_config_files()
 end
+
+-- 通过 im-select 切换输入法
+vim.g.imselect = vim.g.baiduyun .. "\\software\\im-select\\im-select.exe"
+-- print("im-select path: " .. vim.g.imselect)
+-- -- 在启动时切换到英文输入法
+-- -- https://github.com/LazyVim/LazyVim/issues/2592 启动 dashboards 时在 vimenter 事件之后，autocmds.lua 通常在 VimEnter 之后加载。
+vim.api.nvim_create_autocmd("VimEnter", {
+  pattern = "*",
+  callback = function()
+    if vim.fn.has("win32") == 1 then
+      -- 添加延迟确保输入法服务已加载
+      vim.defer_fn(function()
+        vim.fn.system(vim.g.imselect .. " 1033")
+      end, 1000) -- 延迟 1 秒
+    end
+  end,
+})

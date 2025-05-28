@@ -160,64 +160,30 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 -- 设置 autochdir
 vim.opt.autochdir = true
 
--- 避免 Windows 环境每次 tab 切换窗口自动切换输入法，利用 powershell 和 SendKeys 发送 Shift 切换微软拼音输入法的中英文模式
--- local powershell_code = [[
--- Add-Type -AssemblyName System.Windows.Forms;
--- [System.Windows.Forms.SendKeys]::SendWait("+");
--- ]]
---
--- -- local function switch_to_english()
--- --   if vim.fn.has("win32") == 1 then
--- --     -- 在 Windows 上执行 PowerShell 命令
--- --     vim.fn.system('pwsh -Command "' .. powershell_code .. '"')
--- --   end
--- -- end
---
--- -- 异步调用 PowerShell 脚本
--- local function async_run_powershell()
---   if vim.fn.has("win32") == 1 then
---     -- 在 Windows 上执行 PowerShell 命令
---     vim.fn.jobstart('pwsh -NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command "' .. powershell_code .. '"')
---   end
--- end
---
--- -- 在启动时切换到英文输入法
--- vim.api.nvim_create_autocmd({ "VimEnter" }, {
---   group = augroup("switch_input_method"),
---   callback = function()
---     async_run_powershell()
---   end,
--- })
---
--- -- 在进入 Normal 模式时切换到英文输入法
--- vim.api.nvim_create_autocmd({ "InsertLeave" }, {
---   group = augroup("switch_input_method"),
---   callback = function()
---     async_run_powershell()
---   end,
--- })
-
 -- 定义 PowerShell 脚本的路径
-local powershell_script_path = vim.g.baiduyun .. "\\Scripts\\PowerShell\\switch_to_english.ps1"
+-- local powershell_script_path = vim.g.baiduyun .. "\\Scripts\\PowerShell\\switch_to_english.ps1"
 
--- 在启动时切换到英文输入法
-vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  group = augroup("switch_input_method"),
+-- 在进入 Normal 模式时切换到英文输入法
+vim.api.nvim_create_autocmd({ "InsertLeavePre" }, {
+  group = augroup("switch_input_method_to_english"),
   callback = function()
     if vim.fn.has("win32") or vim.fn.has("win64") == 1 then
-      -- 使用 PowerShell 执行脚本
-      vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+      -- 在 Windows 上执行 PowerShell 命令
+      -- vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+      -- 使用 im-select 切换输入法
+      vim.fn.system(vim.g.imselect .. " 1033")
     end
   end,
 })
 
--- 在进入 Normal 模式时切换到英文输入法
-vim.api.nvim_create_autocmd({ "InsertLeave", "InsertEnter" }, {
-  group = augroup("switch_input_method"),
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+  group = augroup("switch_input_method_to_chinese"),
   callback = function()
     if vim.fn.has("win32") or vim.fn.has("win64") == 1 then
       -- 在 Windows 上执行 PowerShell 命令
-      vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+      -- vim.fn.system('powershell -NoLogo -NoProfile -ExecutionPolicy Bypass -File "' .. powershell_script_path .. '"')
+      -- 使用 im-select 切换输入法
+      vim.fn.system(vim.g.imselect .. " 2052")
     end
   end,
 })
