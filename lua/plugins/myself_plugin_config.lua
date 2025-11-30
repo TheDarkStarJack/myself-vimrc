@@ -127,10 +127,10 @@ return {
   },
 
   -- whitestarrain/md-section-number.nvim markdown 章节编号
-  -- {
-  --   "whitestarrain/md-section-number.nvim",
-  --   ft = { "markdown", "md" },
-  -- },
+  {
+    "whitestarrain/md-section-number.nvim",
+    ft = { "markdown", "md" },
+  },
 
   -- 中英文自动空格
   {

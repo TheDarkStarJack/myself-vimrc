@@ -247,6 +247,7 @@ end
 
 -- vim.keymap.set({ "n", "i" }, "<C-m>", add_header, opts)
 -- vim.keymap.set("n", "<C-i>", add_header, opts)
+vim.api.nvim_create_user_command("AddHeader", add_header, {})
 
 -- 保存文件并添加日期前缀的函数
 local function save_with_date()
