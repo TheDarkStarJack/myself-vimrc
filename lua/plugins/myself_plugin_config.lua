@@ -244,14 +244,21 @@ return {
   {
     "akinsho/nvim-toggleterm.lua",
     init = function()
-      if vim.fn.has("win32") then
+      if vim.fn.has("win32") == 1 then
         local powershell_options = {
           -- 需要从 Windows Terminal 或者 pwsh 中启动，直接通过 neovide icon或者Windows快捷启动，环境变量会有问题，无法正确加载pwsh，只能找到powershell
           -- 找到相同的issue ： https://github.com/neovide/neovide/issues/2362
           shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
-          shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
-          shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
-          shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+          -- shelltemp 是否使用临时文件来传递命令，默认为 true，设置为 false 后会使用管道传递命令
+          shelltemp = false,
+          -- shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
+          -- shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
+          shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new()';",
+          -- shellcmdflag = " -NoLogo -NoProfile -ExecutionPolicy RemoteSigned ",
+          -- shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
+          shellpipe = "2>&1 | Out-String -Stream",
+          -- shellpipe = "2>&1 | Out-String -NoNewline; exit $LastExitCode",
+          -- shellpipe = "> %s 2>&1",
           shellquote = "",
           shellxquote = "",
         }
@@ -263,6 +270,7 @@ return {
     end,
     config = function()
       require("toggleterm").setup({
+        trim_spaces = false,
         size = 20,
         open_mapping = [[<c-\>]],
         hide_numbers = true, -- hide the number column in toggleterm buffers
