@@ -322,3 +322,14 @@ end, { desc = "Reset Neovide transparency to 1.0" })
 
 -- 通过 <M-=> 调用 ToggleTermToggleAll 命令，唤醒/隐藏所有终端窗口
 vim.keymap.set({ "n", "i" }, "<M-=>", ":ToggleTermToggleAll<CR>", opts)
+-- https://github.com/akinsho/toggleterm.nvim/issues/425 处理可视化模式下发送代码到终端的问题，空格会被删除的问题
+-- https://github.com/akinsho/toggleterm.nvim/issues/243
+vim.api.nvim_create_user_command("ToggleTermSendCurrentLine", function(opts)
+  require("toggleterm").send_lines_to_terminal("single_line", false, opts.args)
+end, { nargs = "?", force = true })
+vim.api.nvim_create_user_command("ToggleTermSendVisualSelection", function(opts)
+  require("toggleterm").send_lines_to_terminal("visual_selection", false, opts.args)
+end, { range = true, nargs = "?", force = true })
+vim.api.nvim_create_user_command("ToggleTermSendVisualLines", function(opts)
+  require("toggleterm").send_lines_to_terminal("visual_lines", false, opts.args)
+end, { range = true, nargs = "?", force = true })
