@@ -250,15 +250,16 @@ return {
           -- 找到相同的issue ： https://github.com/neovide/neovide/issues/2362
           shell = vim.fn.executable("pwsh") == 1 and "pwsh" or "powershell",
           -- shelltemp 是否使用临时文件来传递命令，默认为 true，设置为 false 后会使用管道传递命令
-          shelltemp = false,
+          shelltemp = true,
           -- shellredir = "-RedirectStandardOutput %s -NoNewWindow -Wait",
-          -- shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
-          shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new()';",
+          shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;$PSStyle.OutputRendering='PlainText';",
+          -- shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command '[Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new()';",
           -- shellcmdflag = " -NoLogo -NoProfile -ExecutionPolicy RemoteSigned ",
           -- shellpipe = "2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode",
-          shellpipe = "2>&1 | Out-String -Stream",
+          -- shellpipe = "2>&1 | Out-String -Stream",
           -- shellpipe = "2>&1 | Out-String -NoNewline; exit $LastExitCode",
-          -- shellpipe = "> %s 2>&1",
+          shellpipe = "> %s 2>&1",
+          shellslash = true,
           shellquote = "",
           shellxquote = "",
         }

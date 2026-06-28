@@ -14,7 +14,7 @@ if vim.fn.has("multi_byte") == 1 then
   vim.o.fileencoding = "utf-8"
 
   -- 打开文件时自动尝试下面顺序的编码
-  vim.o.fileencodings = "ucs-bom,utf-8,gbk,gb18030,big5,euc-jp,latin1"
+  vim.o.fileencodings = "utf-8,ucs-bom,gbk,gb18030,big5,euc-jp,latin1"
 end
 
 -- 设置自动换行
