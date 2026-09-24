@@ -4,3 +4,6 @@ lua/config/mylocal.lua
 
 # lazy-lock.json
 lazy-lock.json
+
+# AGENTS.md（/init 生成的 AI 代理说明，属本地文件）
+AGENTS.md
