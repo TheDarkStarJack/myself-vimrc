@@ -242,7 +242,7 @@ return {
 
   -- 添加 terminal 终端支持
   {
-    "akinsho/nvim-toggleterm.lua",
+    "TheDarkStarJack/toggleterm.nvim",
     init = function()
       if vim.fn.has("win32") == 1 then
         local powershell_options = {
@@ -275,6 +275,8 @@ return {
         size = 20,
         open_mapping = [[<c-\>]],
         hide_numbers = true, -- hide the number column in toggleterm buffers
+        number = true, -- show absolute line numbers in toggleterm buffers (overrides hide_numbers)
+        relativenumber = true, -- show relative line numbers in toggleterm buffers (overrides hide_numbers)
         shade_filetypes = {},
         shade_terminals = true,
         shading_factor = "3", -- the degree by which to darken to terminal colour, default: 1 for dark backgrounds, 3 for light
