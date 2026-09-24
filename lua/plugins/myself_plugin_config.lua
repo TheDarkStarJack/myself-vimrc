@@ -126,9 +126,9 @@ return {
     },
   },
 
-  -- whitestarrain/md-section-number.nvim markdown 章节编号
+  -- TheDarkStarJack/md-section-number markdown 章节编号
   {
-    "whitestarrain/md-section-number.nvim",
+    "TheDarkStarJack/md-section-number",
     ft = { "markdown", "md" },
   },
 
