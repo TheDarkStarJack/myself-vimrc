@@ -163,8 +163,8 @@ vim.opt.autochdir = true
 -- 定义 PowerShell 脚本的路径
 -- local powershell_script_path = vim.g.baiduyun .. "\\Scripts\\PowerShell\\switch_to_english.ps1"
 
--- 在进入 Normal 模式时切换到英文输入法
-vim.api.nvim_create_autocmd({ "InsertLeavePre" }, {
+-- 在进入 Normal 模式（含退出 terminal 模式）时切换到英文输入法
+vim.api.nvim_create_autocmd({ "InsertLeavePre", "TermLeave" }, {
   group = augroup("switch_input_method_to_english"),
   callback = function()
     if vim.fn.has("win32") or vim.fn.has("win64") == 1 then
