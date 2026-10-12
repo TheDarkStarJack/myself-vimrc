@@ -20,6 +20,12 @@ return {
     "skywind3000/vim-text-process",
   },
 
+  -- 自研本地数据库查询插件（代码在同步盘 myplugins 下，不入库，用 dir 挂载本地路径）
+  {
+    dir = vim.g.baiduyun .. "\\nvim\\myplugins\\dbquery.nvim",
+    name = "dbquery.nvim",
+  },
+
   -- 用于在侧边符号栏显示 marks （ma-mz 记录的位置）
   {
     "kshenoy/vim-signature",
