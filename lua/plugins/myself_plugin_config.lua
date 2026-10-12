@@ -169,10 +169,10 @@ return {
   },
 
   -- add github/copilot.vim ai 代码补全
-  {
-    "github/copilot.vim",
-    -- enabled = false,
-  },
+  -- {
+  --   "github/copilot.vim",
+  --   -- enabled = false,
+  -- },
 
   -- nvim avante.nvim 利用 ai 接口提高代码效率
   -- {
