@@ -302,6 +302,13 @@ return {
             background = "Normal",
           },
         },
+        buffer_name = { enabled = true },
+        statusline = {
+          enabled = true,
+          name_formatter = function(term) -- term: Terminal
+            return string.format("%d:%s", term.id, term:_display_name())
+          end,
+        },
       })
     end,
   },
